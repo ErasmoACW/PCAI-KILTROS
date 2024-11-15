@@ -8,5 +8,20 @@ router.get('/', async (req, res) =>{
     res.json(listofalumnos);
 });
 
+router.post("/", async (req, res) =>{
+    const alumno = req.body;
+    await alumnos.create(alumno)
+    res.json(alumno);
+});
+
+router.delete("/:id_alumno", async (req, res) => {
+    const id_alumno = req.params.id_alumno;
+    await alumnos.destroy({
+        where: {
+            id_alumno: id_alumno,
+        },
+    });
+    res.json({ message: "Alumno eliminado" });
+});
 
 module.exports = router;

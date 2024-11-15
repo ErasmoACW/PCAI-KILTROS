@@ -6,6 +6,14 @@ import './alumnos.css';
 const Alumnos = () => {
     const [listofalumnos, setlistofalumnos] = useState([]);
 
+    const deleteAlumno = (id_alumno) => {
+        axios.delete(`http://localhost:8800/alumnos/${id_alumno}`)
+            .then(response => {
+                console.log("Alumno eliminado:", response.data);
+                setlistofalumnos(listofalumnos.filter(alumno => alumno.id_alumno !== id_alumno));
+            });
+    };    
+
     useEffect(() => {
         axios.get("http://localhost:8800/alumnos").then((response) => {
             setlistofalumnos(response.data);
@@ -32,7 +40,8 @@ const Alumnos = () => {
                         placeholder="Buscar por nombre o apellidos"
                     />
                     <div className="alumnos-page-actions">
-                        <button className="alumnos-page-add-btn">Agregar</button>
+                        <Link to="/addalumnos" className="alumnos-page-btn">Agregar Alumnos</Link>
+
                         <select className="alumnos-page-course-select">
                             <option value="">Todos los cursos</option>
                             <option value="1°">1°</option>
@@ -72,7 +81,7 @@ const Alumnos = () => {
                                 <td>{alumno.apellido_ap}</td>
                                 <td>{alumno.curso}</td>
                                 <td><button className="alumnos-page-edit-btn">Editar</button></td>
-                                <td><button className="alumnos-page-delete-btn">Eliminar</button></td>
+                                <td><button className="alumnos-page-delete-btn" onClick={() => deleteAlumno(alumno.id_alumno)}>Eliminar</button></td>
                                 <td><button className="alumnos-page-qr-btn">Ver QR</button></td>
                             </tr>
                         ))}

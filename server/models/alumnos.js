@@ -19,9 +19,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         rut: {
-            type: DataTypes.STRING(15),
+            type: DataTypes.STRING(12),
             allowNull: false,
-            unique: true
         },
         correo_ap: {
             type: DataTypes.STRING(100),
