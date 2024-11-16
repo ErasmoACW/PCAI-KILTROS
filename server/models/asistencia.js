@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         hora: {
             type: DataTypes.TIME,
-            allowNull: false
+            allowNull: true
         },
         curso: {
             type: DataTypes.STRING(60),

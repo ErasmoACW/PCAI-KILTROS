@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './alumnos.css';
+import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react'
 
 const Alumnos = () => {
     const [listofalumnos, setlistofalumnos] = useState([]);
+    const [mostrarQR, setMostrarQR] = useState({}); // Estado para controlar cuándo mostrar el QR
+
 
     const deleteAlumno = (id_alumno) => {
         axios.delete(`http://localhost:8800/alumnos/${id_alumno}`)
@@ -12,13 +15,25 @@ const Alumnos = () => {
                 console.log("Alumno eliminado:", response.data);
                 setlistofalumnos(listofalumnos.filter(alumno => alumno.id_alumno !== id_alumno));
             });
-    };    
+    };
 
     useEffect(() => {
         axios.get("http://localhost:8800/alumnos").then((response) => {
             setlistofalumnos(response.data);
+            const qrStates = response.data.reduce((acc, alumno) => {
+                acc[alumno.rut] = false; 
+                return acc;
+              }, {});
+              setMostrarQR(qrStates);
         });
     }, []);
+
+    const handleMostrarQR = (rut) => {
+        setMostrarQR((prevState) => ({
+          ...prevState,
+          [rut]: !prevState[rut],
+        }));
+      };
 
     return (
         <div className="alumnos-page-container">
@@ -66,6 +81,7 @@ const Alumnos = () => {
                             <th>Editar</th>
                             <th>Eliminar</th>
                             <th>QR</th>
+            
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +98,24 @@ const Alumnos = () => {
                                 <td>{alumno.curso}</td>
                                 <td><button className="alumnos-page-edit-btn">Editar</button></td>
                                 <td><button className="alumnos-page-delete-btn" onClick={() => deleteAlumno(alumno.id_alumno)}>Eliminar</button></td>
-                                <td><button className="alumnos-page-qr-btn">Ver QR</button></td>
+                                
+                                <td>
+                                    <button className="alumnos-page-qr-btn" onClick={() => handleMostrarQR(alumno.rut)}>
+                                        {mostrarQR[alumno.rut] ? "Ocultar QR" : "Mostrar QR"}
+                                    </button>
+                                    {mostrarQR[alumno.rut] && (
+                                        <QRCodeSVG
+                                            value={JSON.stringify(alumno)}
+                                            size={120}
+                                            imageSettings={{
+                                                src: "https://cdn.discordapp.com/attachments/1274470619597111439/1307129763797925969/LogoKiltros.png?ex=67392ef4&is=6737dd74&hm=a064702532b5b68fc1ef8d189830e8b8700c2546667e288a792bdca8574624c4&",
+                                                height: 24, // Altura en píxeles
+                                                width: 24, // Ancho en píxeles
+                                                excavate: true,
+                                            }}
+                                        />
+                                    )}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
