@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './alumnos.css';
 import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react'
 
 const Alumnos = () => {
     const [listofalumnos, setlistofalumnos] = useState([]);
     const [mostrarQR, setMostrarQR] = useState({}); // Estado para controlar cuándo mostrar el QR
-
+    let navigate = useNavigate();
 
     const deleteAlumno = (id_alumno) => {
         axios.delete(`http://localhost:8800/alumnos/${id_alumno}`)
@@ -96,7 +96,7 @@ const Alumnos = () => {
                                 <td>{alumno.nombre_ap}</td>
                                 <td>{alumno.apellido_ap}</td>
                                 <td>{alumno.curso}</td>
-                                <td><button className="alumnos-page-edit-btn">Editar</button></td>
+                                <td><button className="alumnos-page-edit-btn" onClick={() => navigate(`/EditAlumnos/${alumno.id_alumno}`)}>Editar</button></td>
                                 <td><button className="alumnos-page-delete-btn" onClick={() => deleteAlumno(alumno.id_alumno)}>Eliminar</button></td>
                                 
                                 <td>
