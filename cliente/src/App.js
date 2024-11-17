@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Home from "./home/home";
 import Alumnos from "./alumnos/alumnos";
 import Addalumnos from "./alumnos/addalumnos";
+import Editalumnos from "./alumnos/editalumnos";
 import Asistencia from "./asistencia/asistencia";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/alumnos" element={<Alumnos />} />
           <Route path="/Addalumnos" element={<Addalumnos />} />
+          <Route path="/Editalumnos/:id_alumno" element={<Editalumnos />} />
           <Route path="/Asistencia" element={<Asistencia />} />
           
         </Routes>
