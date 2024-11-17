@@ -1,0 +1,101 @@
+/* asistencia.css */
+/* Reset de márgenes y rellenos para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos globales para html y body */
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Sour Gummy', sans-serif; /* Fuente personalizada */
+}
+
+/* Contenedor principal para la página de Asistencia */
+.asistencia-page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Estilo para el encabezado */
+.asistencia-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+/* Logo dentro del encabezado */
+.asistencia-page-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Contenedor para los botones de navegación */
+.asistencia-page-buttons {
+    display: flex;
+}
+
+/* Estilo para los botones de navegación */
+.asistencia-page-btn {
+    background-color: #555;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para los botones de navegación */
+.asistencia-page-btn:hover {
+    background-color: #777;
+}
+
+/* Contenido principal de la página de Asistencia */
+.asistencia-page-main-content {
+    padding: 20px;
+}
+
+/* Estilos para la tabla de asistencia */
+.asistencia-page-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    table-layout: fixed; /* Asegura que todas las columnas tengan el mismo tamaño */
+}
+
+/* Estilos para celdas y cabecera de la tabla */
+.asistencia-page-table th, .asistencia-page-table td {
+    padding: 12px;
+    text-align: center;
+    border-left: 1px solid lightgray; /* Aplica borde izquierdo */
+    border-right: 1px solid lightgray; /* Aplica borde derecho */
+    word-wrap: break-word; /* Para que el texto largo se ajuste */
+}
+
+/* Estilo para la cabecera de la tabla */
+.asistencia-page-table th {
+    border-top: 1px solid lightgray;
+    background-color: #f1f3f5;
+    font-weight: bold;
+}
+
+/* Estilo para las filas pares de la tabla */
+.asistencia-page-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Estilo de hover para las filas de la tabla */
+.asistencia-page-table tr:hover {
+    background-color: #e9ecef;
+}
+.asistencia-page-table tr:last-child {
+    border-bottom: 1px solid lightgray;
+}
+

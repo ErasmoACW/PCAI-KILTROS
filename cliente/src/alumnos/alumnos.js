@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './alumnos.css';
-import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react'
+import QRCode from 'qrcode';
 
 const Alumnos = () => {
     const [listofalumnos, setlistofalumnos] = useState([]);
-    const [mostrarQR, setMostrarQR] = useState({}); // Estado para controlar cuándo mostrar el QR
-
 
     const deleteAlumno = (id_alumno) => {
         axios.delete(`http://localhost:8800/alumnos/${id_alumno}`)
@@ -20,20 +18,46 @@ const Alumnos = () => {
     useEffect(() => {
         axios.get("http://localhost:8800/alumnos").then((response) => {
             setlistofalumnos(response.data);
-            const qrStates = response.data.reduce((acc, alumno) => {
-                acc[alumno.rut] = false; 
-                return acc;
-              }, {});
-              setMostrarQR(qrStates);
         });
     }, []);
 
-    const handleMostrarQR = (rut) => {
-        setMostrarQR((prevState) => ({
-          ...prevState,
-          [rut]: !prevState[rut],
-        }));
-      };
+    const downloadQR = async (alumno) => {
+        try {
+            // Crear los datos que queremos incluir en el QR
+            const data = JSON.stringify({
+                id: alumno.id_alumno,
+                curso: alumno.curso
+            });
+
+            // Crear un canvas temporal
+            const canvas = document.createElement('canvas');
+            canvas.width = 120;
+            canvas.height = 120;
+
+            // Generar el QR en el canvas
+            await QRCode.toCanvas(canvas, data, {
+                width: 120,
+                margin: 2,
+                color: {
+                    dark: '#000000',
+                    light: '#ffffff'
+                },
+                errorCorrectionLevel: 'H'
+            });
+
+            // Convertir el canvas a URL de datos y descargar
+            const dataUrl = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = `QR-${alumno.nombre}-${alumno.apellido_1}.png`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (error) {
+            console.error('Error generando QR:', error);
+            alert('Error al generar el código QR');
+        }
+    };
 
     return (
         <div className="alumnos-page-container">
@@ -56,7 +80,6 @@ const Alumnos = () => {
                     />
                     <div className="alumnos-page-actions">
                         <Link to="/addalumnos" className="alumnos-page-btn">Agregar Alumnos</Link>
-
                         <select className="alumnos-page-course-select">
                             <option value="">Todos los cursos</option>
                             <option value="1°">1°</option>
@@ -81,7 +104,6 @@ const Alumnos = () => {
                             <th>Editar</th>
                             <th>Eliminar</th>
                             <th>QR</th>
-            
                         </tr>
                     </thead>
                     <tbody>
@@ -97,24 +119,21 @@ const Alumnos = () => {
                                 <td>{alumno.apellido_ap}</td>
                                 <td>{alumno.curso}</td>
                                 <td><button className="alumnos-page-edit-btn">Editar</button></td>
-                                <td><button className="alumnos-page-delete-btn" onClick={() => deleteAlumno(alumno.id_alumno)}>Eliminar</button></td>
-                                
                                 <td>
-                                    <button className="alumnos-page-qr-btn" onClick={() => handleMostrarQR(alumno.rut)}>
-                                        {mostrarQR[alumno.rut] ? "Ocultar QR" : "Mostrar QR"}
+                                    <button 
+                                        className="alumnos-page-delete-btn" 
+                                        onClick={() => deleteAlumno(alumno.id_alumno)}
+                                    >
+                                        Eliminar
                                     </button>
-                                    {mostrarQR[alumno.rut] && (
-                                        <QRCodeSVG
-                                            value={JSON.stringify(alumno)}
-                                            size={120}
-                                            imageSettings={{
-                                                src: "https://cdn.discordapp.com/attachments/1274470619597111439/1307129763797925969/LogoKiltros.png?ex=67392ef4&is=6737dd74&hm=a064702532b5b68fc1ef8d189830e8b8700c2546667e288a792bdca8574624c4&",
-                                                height: 24, // Altura en píxeles
-                                                width: 24, // Ancho en píxeles
-                                                excavate: true,
-                                            }}
-                                        />
-                                    )}
+                                </td>
+                                <td>
+                                    <button 
+                                        className="alumnos-page-qr-btn"
+                                        onClick={() => downloadQR(alumno)}
+                                    >
+                                        Descargar QR
+                                    </button>
                                 </td>
                             </tr>
                         ))}
