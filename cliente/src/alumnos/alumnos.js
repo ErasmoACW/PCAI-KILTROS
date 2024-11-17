@@ -123,15 +123,6 @@ const Alumnos = () => {
                                 <td><button className="alumnos-page-edit-btn" onClick={() => navigate(`/EditAlumnos/${alumno.id_alumno}`)}>Editar</button></td>
                                 <td><button className="alumnos-page-delete-btn" onClick={() => deleteAlumno(alumno.id_alumno)}>Eliminar</button></td>
                                 
-                                <td><button className="alumnos-page-edit-btn">Editar</button></td>
-                                <td>
-                                    <button 
-                                        className="alumnos-page-delete-btn" 
-                                        onClick={() => deleteAlumno(alumno.id_alumno)}
-                                    >
-                                        Eliminar
-                                    </button>
-                                </td>
                                 <td>
                                     <button 
                                         className="alumnos-page-qr-btn"
