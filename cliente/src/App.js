@@ -5,6 +5,7 @@ import Addalumnos from "./alumnos/addalumnos";
 import Editalumnos from "./alumnos/editalumnos";
 import Asistencia from "./asistencia/asistencia";
 import Login from "./login/login";
+import Scaner from "./asistencia/scaner"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/Editalumnos/:id_alumno" element={<Editalumnos />} />
           <Route path="/Asistencia" element={<Asistencia />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/scaner" element = {<Scaner/>} />
           
         </Routes>
       </BrowserRouter>
