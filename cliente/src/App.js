@@ -4,6 +4,7 @@ import Alumnos from "./alumnos/alumnos";
 import Addalumnos from "./alumnos/addalumnos";
 import Editalumnos from "./alumnos/editalumnos";
 import Asistencia from "./asistencia/asistencia";
+import Login from "./login/login";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/Addalumnos" element={<Addalumnos />} />
           <Route path="/Editalumnos/:id_alumno" element={<Editalumnos />} />
           <Route path="/Asistencia" element={<Asistencia />} />
+          <Route path="/Login" element={<Login />} />
           
         </Routes>
       </BrowserRouter>
