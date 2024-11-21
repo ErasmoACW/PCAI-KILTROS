@@ -49,12 +49,12 @@ const Editalumnos = () => {
             <header className="editalumnos-page-header">
                 <div className="editalumnos-page-logo">PCAI</div>
                 <div className="editalumnos-page-buttons">
-                    <Link to="/" className="editalumnos-page-btn">Home</Link>
+                    <Link to="/home" className="editalumnos-page-btn">Home</Link>
                     <Link to="/admin" className="admin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="editalumnos-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="editalumnos-page-btn">Asistencia</Link>
                     <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-                    <Link to="/login" className="home-btn">Cerrar Sesion</Link>
+                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
                 </div>
             </header>
             <main className="editalumnos-page-main-content">

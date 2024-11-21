@@ -18,7 +18,7 @@ const Addadmin = () => {
     });
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:8800/admin", data).then((response) => {
+        axios.post("http://localhost:8800/admin/insert", data).then((response) => {
             window.location.reload();
         });
     };
@@ -28,12 +28,12 @@ const Addadmin = () => {
             <header className="addadmin-page-header">
                 <div className="addadmin-page-logo">PCAI</div>
                 <div className="addadmin-page-buttons">
-                    <Link to="/" className="addadmin-page-btn">Home</Link>
+                    <Link to="/home" className="addadmin-page-btn">Home</Link>
                     <Link to="/admin" className="addadmin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="addadmin-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="addadmin-page-btn">Asistencia</Link>
                     <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-                    <Link to="/login" className="home-btn">Cerrar Sesion</Link>
+                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
                     
                 </div>
             </header>

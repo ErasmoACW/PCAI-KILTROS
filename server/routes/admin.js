@@ -13,7 +13,7 @@ router.get("/:id_admin", async (req, res) => {
     res.json(Admin);
 });
 
-router.post("/", async (req, res) =>{
+router.post("/insert", async (req, res) =>{
     const admins = req.body;
     await admin.create(admins)
     res.json(admins);

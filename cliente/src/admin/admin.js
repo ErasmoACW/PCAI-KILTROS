@@ -27,12 +27,12 @@ const Admin = () => {
             <header className="admin-page-header">
                 <div className="admin-page-logo">PCAI</div>
                 <div className="admin-page-buttons">
-                    <Link to="/" className="admin-page-btn">Home</Link>
+                    <Link to="/home" className="admin-page-btn">Home</Link>
                     <Link to="/admin" className="admin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="admin-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="admin-page-btn">Asistencia</Link>
                     <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-                    <Link to="/login" className="home-btn">Cerrar Sesion</Link>
+                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
                     
                 </div>
             </header>

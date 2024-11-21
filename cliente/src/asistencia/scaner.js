@@ -49,12 +49,12 @@ function Scanner() {
       <header className="scanner-page-header">
         <div className="scanner-page-logo">PCAI</div>
         <nav className="scanner-page-buttons">
-          <Link to="/" className="scanner-page-btn">Home</Link>
+          <Link to="/home" className="scanner-page-btn">Home</Link>
           <Link to="/admin" className="scanner-page-btn">Admins</Link>
           <Link to="/alumnos" className="scanner-page-btn">Alumnos</Link>
           <Link to="/asistencia" className="scanner-page-btn">Asistencia</Link>
           <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-          <Link to="/login" className="scanner-page-btn">Cerrar Sesión</Link>
+          <Link to="/" className="scanner-page-btn">Cerrar Sesión</Link>
         </nav>
       </header>
 

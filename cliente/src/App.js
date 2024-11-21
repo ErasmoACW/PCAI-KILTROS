@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/alumnos" element={<Alumnos />} />
           <Route path="/Addalumnos" element={<Addalumnos />} />
           <Route path="/Editalumnos/:id_alumno" element={<Editalumnos />} />
@@ -29,7 +29,7 @@ function App() {
           <Route path="/Editadmin/:id_admin" element={<Editadmin />} />
           
           <Route path="/Asistencia" element={<Asistencia />} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/scaner" element = {<Scaner/>} />
           
         </Routes>

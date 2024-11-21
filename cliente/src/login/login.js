@@ -21,7 +21,7 @@ function AdminLogin() {
 
       if (response.data.success) {
         // Redirigir al panel de administración si el login es exitoso
-        navigate('/');
+        navigate('/home');
       } else {
         // Mostrar error si las credenciales no son correctas
         setError('Usuario o contraseña incorrectos');

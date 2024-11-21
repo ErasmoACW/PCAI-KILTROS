@@ -79,6 +79,11 @@ html, body {
     margin-bottom: 30px;
     font-family: 'Sour Gummy', sans-serif;
 }
+.alumnos-page-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre los elementos */
+}
 
 /* Estilo para el select de cursos */
 .alumnos-page-course-select {
@@ -86,7 +91,7 @@ html, body {
     height: 30px;
     border: 1px solid black;
     margin-left: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
     font-family: 'Sour Gummy', sans-serif;
 }
 

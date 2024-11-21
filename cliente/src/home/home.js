@@ -9,19 +9,19 @@ const Home = () => {
             <header className="home-header">
                 <div className="home-logo">PCAI</div>
                 <div className="home-buttons">
-                    <Link to="/" className="home-btn">Home</Link>
+                    <Link to="/home" className="home-btn">Home</Link>
                     <Link to="/admin" className="admin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="home-btn">Alumnos</Link>
                     <Link to="/asistencia" className="home-btn">Asistencia</Link>
                     <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-                    <Link to="/login" className="home-btn">Cerrar Sesion</Link>
+                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
                 </div>
             </header>
 
             {/* Main content */}
             <main className="home-main-content">
                 <div className="home-console-container">
-                    <p>Consola en tiempo real</p>
+                    <p>Consola en tiempo real en desarrollo.....</p>
                 </div>
             </main>
         </div>

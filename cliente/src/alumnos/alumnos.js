@@ -28,6 +28,10 @@ const Alumnos = () => {
             // Crear los datos que queremos incluir en el QR
             const data = JSON.stringify({
                 id: alumno.id_alumno,
+                nombre: alumno.nombre,
+                apellido_1: alumno.apellido_1,
+                apellido_2: alumno.apellido_2,
+                correo_ap: alumno.correo_ap,
                 curso: alumno.curso
             });
 
@@ -67,23 +71,20 @@ const Alumnos = () => {
             <header className="alumnos-page-header">
                 <div className="alumnos-page-logo">PCAI</div>
                 <div className="alumnos-page-buttons">
-                    <Link to="/" className="alumnos-page-btn">Home</Link>
+                    <Link to="/home" className="alumnos-page-btn">Home</Link>
                     <Link to="/admin" className="admin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="alumnos-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="alumnos-page-btn">Asistencia</Link>
                     <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-                    <Link to="/login" className="home-btn">Cerrar Sesion</Link>
+                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
 
                 </div>
             </header>
             <main className="alumnos-page-main-content">
+            <div className="alumnos-page-filter-container">
                 <h1>Lista de Alumnos</h1>
-                <div className="alumnos-page-filter-container">
-                    <input
-                        type="text"
-                        className="alumnos-page-search-input"
-                        placeholder="Buscar por nombre o apellidos"
-                    />
+                
+                   
                     <div className="alumnos-page-actions">
                         <Link to="/addalumnos" className="alumnos-page-btn">Agregar Alumnos</Link>
                         <select className="alumnos-page-course-select">
