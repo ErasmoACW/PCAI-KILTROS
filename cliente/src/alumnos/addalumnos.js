@@ -41,8 +41,10 @@ const Addalumnos = () => {
                 <div className="addalumnos-page-logo">PCAI</div>
                 <div className="addalumnos-page-buttons">
                     <Link to="/" className="addalumnos-page-btn">Home</Link>
+                    <Link to="/admin" className="admin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="addalumnos-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="addalumnos-page-btn">Asistencia</Link>
+                    <Link to="/login" className="home-btn">Cerrar Sesion</Link>
                 </div>
             </header>
             <main className="addalumnos-page-main-content">

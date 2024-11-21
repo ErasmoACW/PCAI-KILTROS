@@ -1,11 +1,11 @@
-/* Contenedor general del login */
+/* 
 .login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Garantiza altura completa */
-    background-image: url('6229893.jpg'); /* Fondo principal */
+    min-height: 100vh; 
+    background-image: url('6229893.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,47 +15,47 @@
     box-sizing: border-box;
 }
 
-/* Cuadro del título */
+
 .title-box {
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente negro */
+    background-color: rgba(0, 0, 0, 0.7); 
     padding: 20px;
-    border-radius: 10px 10px 0 0; /* Bordes redondeados arriba */
-    width: 400px; /* Ancho igual al formulario */
+    border-radius: 10px 10px 0 0;
+    width: 400px; 
     text-align: center;
-    margin: 0; /* Sin separación extra */
-    border: 2px solid black; /* Marco negro */
+    margin: 0; 
+    border: 2px solid black; 
     box-sizing: border-box;
 }
 
-/* Texto del título */
+
 .title-box h2 {
     font-size: 24px;
-    color: #ffffff; /* Texto blanco */
+    color: #ffffff; 
     margin: 0;
 }
 
-/* Formulario */
+
 form {
-    background-color: rgba(255, 255, 255, 0.2); /* 20% de opacidad */
-    padding: 50px; /* Espaciado interno */
-    border-radius: 0 0 10px 10px; /* Bordes redondeados abajo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+    background-color: rgba(255, 255, 255, 0.2); 
+    padding: 50px; 
+    border-radius: 0 0 10px 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     width: 400px;
-    border: 2px solid black; /* Marco negro */
-    border-top: none; /* Elimina el borde entre el título y el formulario */
+    border: 2px solid black; 
+    border-top: none; 
     text-align: center;
 }
 
-/* Grupos del formulario */
+
 .form-group {
     position: relative;
     margin-bottom: 20px;
 }
 
-/* Etiquetas dentro del formulario */
+
 .form-group label {
     position: absolute;
-    left: 40px; /* Espacio para los iconos */
+    left: 40px;
     top: 50%;
     transform: translateY(-50%);
     color: #999;
@@ -69,7 +69,7 @@ form {
     position: absolute;
     width: 24px;
     height: 24px;
-    left: 10px; /* Espaciado para los iconos */
+    left: 10px; 
     top: 50%;
     transform: translateY(-50%);
     background-size: cover;
@@ -89,14 +89,14 @@ form {
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    padding: 10px 10px 10px 40px; /* Espaciado para los iconos */
+    padding: 10px 10px 10px 40px; 
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
 }
 
-/* Botón de inicio de sesión */
+
 button[type="submit"] {
     width: 100%;
     padding: 15px;
@@ -112,9 +112,9 @@ button[type="submit"]:hover {
     background-color: #417cb8;
 }
 
-/* Mensaje de error */
+
 .error {
     color: #ff4d4d;
     font-size: 14px;
     margin-top: 10px;
-}
+} */

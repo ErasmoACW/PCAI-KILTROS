@@ -53,8 +53,10 @@ function Asistencia() {
                 <div className="asistencia-page-logo">PCAI</div>
                 <div className="asistencia-page-buttons">
                     <Link to="/" className="asistencia-page-btn">Home</Link>
+                    <Link to="/admin" className="admin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="asistencia-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="asistencia-page-btn">Asistencia</Link>
+                    <Link to="/login" className="home-btn">Cerrar Sesion</Link>
                 </div>
             </header>
 

@@ -23,7 +23,7 @@ router.post("/", async (req, res) =>{
 router.put("/:id_alumno", async (req, res) => {
     const id_alumno = req.params.id_alumno;
     const alumno = req.body
-    await alumnos.update({id_alumno: alumno.id_alumno, nombre: alumno.nombre, apellido_1: alumno.apellido_1, apellido_2: alumno.apellido_2},{where: {id_alumno: id_alumno,},},);
+    await alumnos.update({id_alumno: alumno.id_alumno, nombre: alumno.nombre, apellido_1: alumno.apellido_1, apellido_2: alumno.apellido_2, correo_ap: alumno.correo_ap, nombre_ap: alumno.nombre_ap, apellido_ap: alumno.apellido_ap, curso: alumno.curso},{where: {id_alumno: id_alumno,},},);
 });
 
 router.delete("/:id_alumno", async (req, res) => {

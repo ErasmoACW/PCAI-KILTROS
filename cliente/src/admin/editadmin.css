@@ -12,15 +12,15 @@ html, body {
     font-family: 'Sour Gummy', sans-serif; /* Fuente personalizada */
 }
 
-/* Contenedor principal para la página de Editar Alumnos */
-.editalumnos-page-container {
+/* Contenedor principal para la página de Editar Admin */
+.editadmin-page-container {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
 /* Estilo para el encabezado */
-.editalumnos-page-header {
+.editadmin-page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,18 +30,18 @@ html, body {
 }
 
 /* Logo dentro del encabezado */
-.editalumnos-page-logo {
+.editadmin-page-logo {
     font-size: 1.5rem;
     font-weight: bold;
 }
 
 /* Contenedor para los botones de navegación */
-.editalumnos-page-buttons {
+.editadmin-page-buttons {
     display: flex;
 }
 
 /* Estilo para los botones de navegación */
-.editalumnos-page-btn {
+.editadmin-page-btn {
     background-color: #555;
     color: #fff;
     padding: 0.5rem 1rem;
@@ -52,12 +52,12 @@ html, body {
 }
 
 /* Efecto hover para los botones de navegación */
-.editalumnos-page-btn:hover {
+.editadmin-page-btn:hover {
     background-color: #777;
 }
 
 /* Contenedor principal del contenido */
-.editalumnos-page-main-content {
+.editadmin-page-main-content {
     flex: 1;
     display: flex;
     justify-content: center; /* Centra horizontalmente el formulario */
@@ -67,7 +67,7 @@ html, body {
 }
 
 /* Título principal */
-.editalumnos-page-title {
+.editadmin-page-title {
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
     font-weight: bold;
@@ -76,7 +76,7 @@ html, body {
 }
 
 /* Contenedor principal para el formulario */
-.editalumnos-form {
+.editadmin-form {
     background-color: #fff;
     padding: 2rem;
     border-radius: 8px;
@@ -123,7 +123,7 @@ html, body {
 }
 
 /* Botón de envío */
-.editalumnos-form-button {
+.editadmin-form-button {
     background-color: #007BFF;
     color: #fff;
     padding: 0.75rem 1.5rem;
@@ -137,7 +137,7 @@ html, body {
 }
 
 /* Efecto hover para el botón */
-.editalumnos-form-button:hover {
+.editadmin-form-button:hover {
     background-color: #0056b3;
 }
 
@@ -151,7 +151,7 @@ html, body {
 
 /* Ajustes para dispositivos pequeños */
 @media (max-width: 600px) {
-    .editalumnos-page-main-content {
+    .editadmin-page-main-content {
         padding: 1rem; /* Reduce el espacio de los bordes en pantallas pequeñas */
     }
 }

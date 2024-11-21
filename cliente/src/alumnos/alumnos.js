@@ -68,8 +68,11 @@ const Alumnos = () => {
                 <div className="alumnos-page-logo">PCAI</div>
                 <div className="alumnos-page-buttons">
                     <Link to="/" className="alumnos-page-btn">Home</Link>
+                    <Link to="/admin" className="admin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="alumnos-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="alumnos-page-btn">Asistencia</Link>
+                    <Link to="/login" className="home-btn">Cerrar Sesion</Link>
+
                 </div>
             </header>
             <main className="alumnos-page-main-content">
