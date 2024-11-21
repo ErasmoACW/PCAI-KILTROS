@@ -1,11 +1,10 @@
-/* 
-.login-container {
+.loginPage-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; 
-    background-image: url('6229893.jpg'); 
+    min-height: 100vh;
+    background-image: url('6229893.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,45 +14,40 @@
     box-sizing: border-box;
 }
 
-
-.title-box {
-    background-color: rgba(0, 0, 0, 0.7); 
+.loginPage-titleBox {
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px 10px 0 0;
-    width: 400px; 
+    width: 400px;
     text-align: center;
-    margin: 0; 
-    border: 2px solid black; 
+    margin: 0;
+    border: 2px solid black;
     box-sizing: border-box;
 }
 
-
-.title-box h2 {
+.loginPage-titleBox h2 {
     font-size: 24px;
-    color: #ffffff; 
+    color: #ffffff;
     margin: 0;
 }
 
-
-form {
-    background-color: rgba(255, 255, 255, 0.2); 
-    padding: 50px; 
-    border-radius: 0 0 10px 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+.loginPage-form {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 50px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 400px;
-    border: 2px solid black; 
-    border-top: none; 
+    border: 2px solid black;
+    border-top: none;
     text-align: center;
 }
 
-
-.form-group {
+.loginPage-formGroup {
     position: relative;
     margin-bottom: 20px;
 }
 
-
-.form-group label {
+.loginPage-formGroup label {
     position: absolute;
     left: 40px;
     top: 50%;
@@ -63,41 +57,36 @@ form {
     pointer-events: none;
 }
 
-
-.form-group::before {
+.loginPage-formGroup::before {
     content: '';
     position: absolute;
     width: 24px;
     height: 24px;
-    left: 10px; 
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     background-size: cover;
 }
 
-
-.form-group:nth-child(1)::before {
+.loginPage-formGroup:nth-child(1)::before {
     background-image: url('icono-usuario.png');
 }
 
-
-.form-group:nth-child(2)::before {
+.loginPage-formGroup:nth-child(2)::before {
     background-image: url('icono-contraseña.png');
 }
-
 
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    padding: 10px 10px 10px 40px; 
+    padding: 10px 10px 10px 40px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
 }
 
-
-button[type="submit"] {
+.loginPage-submitButton {
     width: 100%;
     padding: 15px;
     background-color: #5b9bd5;
@@ -108,13 +97,13 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-button[type="submit"]:hover {
+.loginPage-submitButton:hover {
     background-color: #417cb8;
 }
 
-
-.error {
+.loginPage-error {
     color: #ff4d4d;
     font-size: 14px;
     margin-top: 10px;
-} */
+}
+

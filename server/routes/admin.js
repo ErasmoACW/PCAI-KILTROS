@@ -37,29 +37,29 @@ router.delete("/:id_admin", async (req, res) => {
 
 module.exports = router;
 
-// Ruta para autenticar usuario
-// router.post('/', async (req, res) => {
-//     const { username, password } = req.body;
 
-//     try {
-//         // Buscar al administrador por el nombre de usuario
-//         const user = await admin.findOne({ where: { usuario: username } });
+ router.post('/', async (req, res) => {
+     const { username, password } = req.body;
 
-//         if (!user) {
-//             return res.status(401).json({ success: false, message: 'Usuario no encontrado' });
-//         }
+     try {
+         // Buscar al administrador por el nombre de usuario
+         const user = await admin.findOne({ where: { usuario: username } });
 
-//         // Comparar la contraseña (ajusta si usas encriptación)
-//         if (user.contrasena !== password) {
-//             return res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
-//         }
+         if (!user) {
+             return res.status(401).json({ success: false, message: 'Usuario no encontrado' });
+         }
 
-//         // Respuesta exitosa
-//         res.json({ success: true });
-//     } catch (error) {
-//         console.error('Error en la autenticación:', error);
-//         res.status(500).json({ success: false, message: 'Error en el servidor' });
-//     }
-// });
+         // Comparar la contraseña (ajusta si usas encriptación)
+         if (user.contrasena !== password) {
+             return res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+         }
 
-// module.exports = router;
+         // Respuesta exitosa
+        res.json({ success: true });
+    } catch (error) {
+         console.error('Error en la autenticación:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
+     }
+ });
+
+ module.exports = router;

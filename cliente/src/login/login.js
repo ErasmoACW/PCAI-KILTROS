@@ -33,12 +33,12 @@ function AdminLogin() {
   };
 
   return (
-<div className="login-container">
-  <div className="title-box">
+<div className="loginPage-container">
+  <div className="loginPage-titleBox">
     <h2>Bienvenido</h2>
   </div>
-  <form onSubmit={handleLogin}>
-    <div className="form-group">
+  <form onSubmit={handleLogin} className="loginPage-form">
+    <div className="loginPage-formGroup">
       <label htmlFor="username">
         <i className="fas fa-user"></i>
       </label>
@@ -52,7 +52,7 @@ function AdminLogin() {
         required
       />
     </div>
-    <div className="form-group">
+    <div className="loginPage-formGroup">
       <label htmlFor="password">
         <i className="fas fa-lock"></i>
       </label>
@@ -66,13 +66,14 @@ function AdminLogin() {
         required
       />
     </div>
-    {error && <p className="error">{error}</p>}
-    <button type="submit">Iniciar sesión</button>
+    {error && <p className="loginPage-error">{error}</p>}
+    <button type="submit" className="loginPage-submitButton">
+      Iniciar sesión
+    </button>
   </form>
 </div>
 
-
-  );
+)
   
 }
 
