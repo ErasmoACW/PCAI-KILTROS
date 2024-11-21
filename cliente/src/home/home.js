@@ -13,6 +13,7 @@ const Home = () => {
                     <Link to="/admin" className="admin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="home-btn">Alumnos</Link>
                     <Link to="/asistencia" className="home-btn">Asistencia</Link>
+                    <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
                     <Link to="/login" className="home-btn">Cerrar Sesion</Link>
                 </div>
             </header>

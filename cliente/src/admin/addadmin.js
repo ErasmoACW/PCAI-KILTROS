@@ -32,6 +32,7 @@ const Addadmin = () => {
                     <Link to="/admin" className="addadmin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="addadmin-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="addadmin-page-btn">Asistencia</Link>
+                    <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
                     <Link to="/login" className="home-btn">Cerrar Sesion</Link>
                     
                 </div>
