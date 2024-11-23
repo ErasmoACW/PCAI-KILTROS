@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './addalumnos.css';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const Addalumnos = () => {
+    const navigate = useNavigate(); // Hook para manejar la navegación
 
     const initialValues = {
         nombre: "",
@@ -23,7 +25,7 @@ const Addalumnos = () => {
         apellido_1: Yup.string().required(),
         apellido_2: Yup.string().required(),
         rut: Yup.string().required(),
-        correo_ap: Yup.string().required(),
+        correo_ap: Yup.string().required("El correo debe ser en formato ejemplo@gmail.com"),
         nombre_ap: Yup.string().required(),
         apellido_ap: Yup.string().required(),
         curso: Yup.string().required(),
@@ -31,7 +33,7 @@ const Addalumnos = () => {
 
     const onSubmit = (data) => {
         axios.post("http://localhost:8800/alumnos", data).then((response) => {
-            window.location.reload();
+            navigate("/alumnos"); // Navegar a la ruta /alumnos
         });
     };
 
@@ -95,6 +97,7 @@ const Addalumnos = () => {
                                 name="correo_ap"
                                 placeholder="Ej: ejemplo@gmail.com"
                             />
+                             <ErrorMessage name="correo_ap" component="span" className="form-error" />
                         </div>
                         <div className="form-group">
                             <label className="form-label" htmlFor="nombre_ap">Nombre Apoderado:</label>
