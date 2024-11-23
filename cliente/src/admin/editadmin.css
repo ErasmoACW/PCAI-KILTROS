@@ -49,6 +49,7 @@ html, body {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
 /* Efecto hover para los botones de navegación */

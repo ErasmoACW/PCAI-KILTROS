@@ -41,11 +41,11 @@ const Addalumnos = () => {
                 <div className="addalumnos-page-logo">PCAI</div>
                 <div className="addalumnos-page-buttons">
                     <Link to="/home" className="addalumnos-page-btn">Home</Link>
-                    <Link to="/admin" className="admin-page-btn">Admins</Link>
+                    <Link to="/admin" className="addalumnos-page-btn">Admins</Link>
                     <Link to="/alumnos" className="addalumnos-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="addalumnos-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
+                    <Link to="/scaner" className="addalumnos-page-btn">Escaner QR</Link>
+                    <Link to="/" className="addalumnos-page-btn">Cerrar Sesion</Link>
                 </div>
             </header>
             <main className="addalumnos-page-main-content">
@@ -117,12 +117,19 @@ const Addalumnos = () => {
                         <div className="form-group">
                             <label className="form-label" htmlFor="curso">Curso:</label>
                             <Field
+                                as="select" // Cambiado para usar un select
                                 className="form-input"
                                 id="curso"
                                 name="curso"
-                                placeholder="Ej: 1°A"
-                            />
+                            >
+                                <option value="">Selecciona un curso</option>
+                                <option value="1°">1°</option>
+                                <option value="2°">2°</option>
+                                <option value="3°">3°</option>
+                                <option value="4°">4°</option>
+                            </Field>
                         </div>
+
                         <button type="submit" className="form-button">Crear Alumno</button>
                     </Form>
                 </Formik>

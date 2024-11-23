@@ -40,11 +40,11 @@ const Editadmin = () => {
                 <div className="editadmin-page-logo">PCAI</div>
                 <div className="editadmin-page-buttons">
                     <Link to="/home" className="editadmin-page-btn">Home</Link>
-                    <Link to="/admin" className="admin-page-btn">Admins</Link>
+                    <Link to="/admin" className="editadmin-page-btn">Admins</Link>
                     <Link to="/alumnos" className="editadmin-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="editadmin-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
+                    <Link to="/scaner" className="editadmin-page-btn">Escaner QR</Link>
+                    <Link to="/" className="editadmin-page-btn">Cerrar Sesion</Link>
                 </div>
             </header>
             <main className="editadmin-page-main-content">

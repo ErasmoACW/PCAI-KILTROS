@@ -48,6 +48,7 @@ html, body {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
 .admin-page-btn:hover {

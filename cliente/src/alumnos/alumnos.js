@@ -6,6 +6,8 @@ import QRCode from 'qrcode';
 
 const Alumnos = () => {
     const [listofalumnos, setlistofalumnos] = useState([]);
+    const [filteredAlumnos, setFilteredAlumnos] = useState([]); // Para almacenar los alumnos filtrados
+    const [searchTerm, setSearchTerm] = useState(""); // Estado para la barra de búsqueda
     const [mostrarQR, setMostrarQR] = useState({}); // Estado para controlar cuándo mostrar el QR
     let navigate = useNavigate();
 
@@ -20,12 +22,26 @@ const Alumnos = () => {
     useEffect(() => {
         axios.get("http://localhost:8800/alumnos").then((response) => {
             setlistofalumnos(response.data);
+            setFilteredAlumnos(response.data); // Inicializa los alumnos filtrados
         });
     }, []);
 
+    // Filtrar alumnos en tiempo real según el término de búsqueda
+    useEffect(() => {
+        const results = listofalumnos.filter((alumno) =>
+            `${alumno.nombre} ${alumno.apellido_1} ${alumno.apellido_2}`
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase())
+        );
+        setFilteredAlumnos(results);
+    }, [searchTerm, listofalumnos]);
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
     const downloadQR = async (alumno) => {
         try {
-            // Crear los datos que queremos incluir en el QR
             const data = JSON.stringify({
                 id: alumno.id_alumno,
                 nombre: alumno.nombre,
@@ -35,12 +51,10 @@ const Alumnos = () => {
                 curso: alumno.curso
             });
 
-            // Crear un canvas temporal
             const canvas = document.createElement('canvas');
             canvas.width = 120;
             canvas.height = 120;
 
-            // Generar el QR en el canvas
             await QRCode.toCanvas(canvas, data, {
                 width: 120,
                 margin: 2,
@@ -51,7 +65,6 @@ const Alumnos = () => {
                 errorCorrectionLevel: 'H'
             });
 
-            // Convertir el canvas a URL de datos y descargar
             const dataUrl = canvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.href = dataUrl;
@@ -72,30 +85,28 @@ const Alumnos = () => {
                 <div className="alumnos-page-logo">PCAI</div>
                 <div className="alumnos-page-buttons">
                     <Link to="/home" className="alumnos-page-btn">Home</Link>
-                    <Link to="/admin" className="admin-page-btn">Admins</Link>
+                    <Link to="/admin" className="alumnos-page-btn">Admins</Link>
                     <Link to="/alumnos" className="alumnos-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="alumnos-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
-
+                    <Link to="/scaner" className="alumnos-page-btn">Escaner QR</Link>
+                    <Link to="/" className="alumnos-page-btn">Cerrar Sesion</Link>
                 </div>
             </header>
             <main className="alumnos-page-main-content">
-            <div className="alumnos-page-filter-container">
-                <h1>Lista de Alumnos</h1>
-                
-                   
-                    <div className="alumnos-page-actions">
+                <div className="alumnos-page-filter-container">
+                    <h1>Lista de Alumnos</h1>
+                    <div className="alumnos-page-search-actions">
+                        <input
+                            type="text"
+                            placeholder="Buscar alumno..."
+                            className="alumnos-page-search-bar"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                        />
                         <Link to="/addalumnos" className="alumnos-page-btn">Agregar Alumnos</Link>
-                        <select className="alumnos-page-course-select">
-                            <option value="">Todos los cursos</option>
-                            <option value="1°">1°</option>
-                            <option value="2°">2°</option>
-                            <option value="3°">3°</option>
-                            <option value="4°">4°</option>
-                        </select>
                     </div>
                 </div>
+
                 <table className="alumnos-page-table">
                     <thead>
                         <tr>
@@ -114,7 +125,7 @@ const Alumnos = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {listofalumnos.map((alumno) => (
+                        {filteredAlumnos.map((alumno) => (
                             <tr key={alumno.id_alumno}>
                                 <td>{alumno.id_alumno}</td>
                                 <td>{alumno.nombre}</td>
@@ -127,9 +138,8 @@ const Alumnos = () => {
                                 <td>{alumno.curso}</td>
                                 <td><button className="alumnos-page-edit-btn" onClick={() => navigate(`/EditAlumnos/${alumno.id_alumno}`)}>Editar</button></td>
                                 <td><button className="alumnos-page-delete-btn" onClick={() => deleteAlumno(alumno.id_alumno)}>Eliminar</button></td>
-                                
                                 <td>
-                                    <button 
+                                    <button
                                         className="alumnos-page-qr-btn"
                                         onClick={() => downloadQR(alumno)}
                                     >
