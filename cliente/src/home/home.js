@@ -3,6 +3,26 @@ import { Link } from 'react-router-dom';
 import './home.css';
 
 const Home = () => {
+    const handleSendTestEmail = async () => {
+        try {
+          const response = await fetch('http://localhost:8800/api/send-test-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+      
+          const data = await response.json();
+          if (response.ok) {
+            alert(data.message);  // Mostrar mensaje de éxito
+          } else {
+            throw new Error(data.message);
+          }
+        } catch (error) {
+          alert('Error al enviar el correo: ' + error.message);  // Mostrar error
+        }
+      };
+      
     return (
         <div className="home-container">
             {/* Header */}
@@ -21,6 +41,7 @@ const Home = () => {
             {/* Main content */}
             <main className="home-main-content">
                 <div className="home-console-container">
+                    <button onClick={handleSendTestEmail}>Enviar Correo de Prueba</button>
                     <p>Consola en tiempo real en desarrollo.....</p>
                 </div>
             </main>
