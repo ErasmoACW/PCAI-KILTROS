@@ -18,6 +18,23 @@ html, body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-image: url("../ima/3.png"); /* Ruta de la imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el área */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    position: relative; /* Necesario para posicionar el overlay correctamente */
+}
+
+/* Overlay semi-transparente sobre el fondo de la imagen */
+.asistencia-page-container::before {
+    content: ""; /* Necesario para crear el pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(51, 51, 51, 0.7); /* Fondo oscuro con opacidad */
+    z-index: -1; /* Pone el overlay detrás del contenido */
 }
 
 /* Estilo para el encabezado */
@@ -25,9 +42,10 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: #fff;
+    background-color: rgba(51, 51, 51, 0.7); /* Fondo oscuro semi-translúcido */
+    color: #ffffffbb;
     padding: 1rem;
+    width: 100%;
 }
 
 /* Logo dentro del encabezado */
@@ -61,6 +79,20 @@ html, body {
 /* Contenido principal de la página de Asistencia */
 .asistencia-page-main-content {
     padding: 20px;
+    width: 100%;
+    display: block; /* Cambia el display de flex a block para que los elementos se alineen hacia la parte superior */
+}
+
+/* Estilo para el formulario o área de registro de asistencia */
+.asistencia-page-register {
+    margin-top: 0; /* Asegura que no haya espacio arriba */
+    padding: 0;
+}
+
+/* Si tienes una sección para el nombre completo, aplica lo siguiente */
+.asistencia-page-fullname {
+    margin-top: 0; /* Elimina cualquier espacio superior */
+    padding: 0;
 }
 
 /* Estilos para la tabla de asistencia */
@@ -83,7 +115,7 @@ html, body {
 /* Estilo para la cabecera de la tabla */
 .asistencia-page-table th {
     border-top: 1px solid lightgray;
-    background-color: #f1f3f5;
+    background-color: #f1f3f59d;
     font-weight: bold;
 }
 
@@ -96,7 +128,9 @@ html, body {
 .asistencia-page-table tr:hover {
     background-color: #e9ecef;
 }
+
 .asistencia-page-table tr:last-child {
     border-bottom: 1px solid lightgray;
 }
+
 

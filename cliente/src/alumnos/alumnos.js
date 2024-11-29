@@ -26,6 +26,11 @@ const Alumnos = () => {
         });
     }, []);
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');  // Eliminar el token
+        navigate('/');  // Redirigir al home o login
+    };
+
     // Filtrar alumnos en tiempo real según el término de búsqueda
     useEffect(() => {
         const results = listofalumnos.filter((alumno) =>
@@ -89,7 +94,8 @@ const Alumnos = () => {
                     <Link to="/alumnos" className="alumnos-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="alumnos-page-btn">Asistencia</Link>
                     <Link to="/scaner" className="alumnos-page-btn">Escaner QR</Link>
-                    <Link to="/" className="alumnos-page-btn">Cerrar Sesion</Link>
+                    {/* Botón de cerrar sesión con el evento handleLogout */}
+                    <button onClick={handleLogout} className="home-btn">Cerrar Sesión</button>
                 </div>
             </header>
             <main className="alumnos-page-main-content">

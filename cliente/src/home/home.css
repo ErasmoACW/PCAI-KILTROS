@@ -15,16 +15,21 @@ html, body {
 .home-container {
   display: flex;
   flex-direction: column;
+  background-image: url("../ima/3.png"); /* Asegúrate de que la ruta sea correcta */
+  background-size: cover; /* Asegura que la imagen cubra todo el área */
+  background-position: center; /* Centra la imagen */
   height: 100vh;
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
 .home-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: rgba(51, 51, 51, 0.7); /* Fondo oscuro con opacidad */
   color: #fff;
   padding: 1rem;
+  width: 100%;
 }
 
 .home-logo {
@@ -56,16 +61,17 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0;
+  background-color: rgba(240, 240, 240, 0.45); /* Fondo más visible */
+  width: 100%;
 }
 
 .home-console-container {
   width: 80%;
   height: 80%;
-  border: 2px dashed #ccc;
+  border: 2px dashed #000000;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  color: #666;
+  color: #0f0f0f;
 }

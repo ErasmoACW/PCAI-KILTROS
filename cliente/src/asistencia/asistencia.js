@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./asistencia.css";
 
 function Asistencia() {
     const [listofasistencia, setlistofasistencia] = useState([]);
     const [fechasUnicas, setFechasUnicas] = useState([]);
     const [dataTransformada, setDataTransformada] = useState({});
+    const navigate = useNavigate();  // Inicializamos el hook useNavigate
 
     const convertirAsistencia = (valor) => {
         switch (valor) {
@@ -19,6 +20,11 @@ function Asistencia() {
             default:
                 return "-";
         }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');  // Eliminar el token
+        navigate('/');  // Redirigir al home o login
     };
 
     useEffect(() => {
@@ -57,7 +63,8 @@ function Asistencia() {
                     <Link to="/alumnos" className="asistencia-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="asistencia-page-btn">Asistencia</Link>
                     <Link to="/scaner" className="asistencia-page-btn">Escaner QR</Link>
-                    <Link to="/" className="asistencia-page-btn">Cerrar Sesion</Link>
+                    {/* Botón de Cerrar Sesión con la función handleLogout */}
+                    <button onClick={handleLogout} className="home-btn">Cerrar Sesión</button>
                 </div>
             </header>
 
@@ -92,3 +99,4 @@ function Asistencia() {
 }
 
 export default Asistencia;
+

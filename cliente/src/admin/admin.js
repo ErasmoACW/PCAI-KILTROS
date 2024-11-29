@@ -15,6 +15,11 @@ const Admin = () => {
             });
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');  // Eliminar el token
+        navigate('/');  // Redirigir al home o login
+    };
+
     useEffect(() => {
         axios.get("http://localhost:8800/admin").then((response) => {
             setlistofadmin(response.data);
@@ -32,10 +37,12 @@ const Admin = () => {
                     <Link to="/alumnos" className="admin-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="admin-page-btn">Asistencia</Link>
                     <Link to="/scaner" className="admin-page-btn">Escaner QR</Link>
-                    <Link to="/" className="admin-page-btn">Cerrar Sesion</Link>
-                    
+                    {/* Botón de cerrar sesión con el evento handleLogout */}
+                    <button onClick={handleLogout} className="home-btn">Cerrar Sesión</button>
                 </div>
             </header>
+
+            {/* Main Content */}
             <main className="admin-page-main-content">
                 <div className="admin-page-header-container">
                     <h1 className="admin-page-title">Lista de Administradores</h1>
@@ -83,3 +90,4 @@ const Admin = () => {
 };
 
 export default Admin;
+

@@ -62,4 +62,30 @@ module.exports = router;
      }
  });
 
+ const jwt = require('jsonwebtoken'); // Instalar con: npm install jsonwebtoken
+
+router.post('/', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await admin.findOne({ where: { usuario: username } });
+
+        if (!user) {
+            return res.status(401).json({ success: false, message: 'Usuario no encontrado' });
+        }
+
+        if (user.contrasena !== password) {
+            return res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+        }
+
+        // Crear un token simple
+        const token = jwt.sign({ id: user.id_admin, username: user.usuario }, 'clave_secreta', { expiresIn: '1h' });
+
+        res.json({ success: true, token });
+    } catch (error) {
+        console.error('Error en la autenticación:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
+    }
+});
+
  module.exports = router;

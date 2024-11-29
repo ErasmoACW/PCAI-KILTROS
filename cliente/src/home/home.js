@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './home.css';
 
 const Home = () => {
+    const navigate = useNavigate();
+
     const handleSendTestEmail = async () => {
         try {
           const response = await fetch('http://localhost:8800/api/send-test-email', {
@@ -21,8 +23,13 @@ const Home = () => {
         } catch (error) {
           alert('Error al enviar el correo: ' + error.message);  // Mostrar error
         }
-      };
-      
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');  // Eliminar el token
+        navigate('/');  // Redirigir al home o login
+    };
+
     return (
         <div className="home-container">
             {/* Header */}
@@ -34,7 +41,8 @@ const Home = () => {
                     <Link to="/alumnos" className="home-btn">Alumnos</Link>
                     <Link to="/asistencia" className="home-btn">Asistencia</Link>
                     <Link to="/scaner" className="home-btn">Escaner QR</Link>
-                    <Link to="/" className="home-btn">Cerrar Sesion</Link>
+                    {/* Botón de cerrar sesión con el evento handleLogout */}
+                    <button onClick={handleLogout} className="home-btn">Cerrar Sesión</button>
                 </div>
             </header>
 
@@ -50,3 +58,4 @@ const Home = () => {
 };
 
 export default Home;
+
