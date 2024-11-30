@@ -18,6 +18,15 @@ function Scanner() {
       console.error("Error al registrar asistencia:", error);
     }
   };
+  
+  const enviarCorreo = async (datos) =>{
+    try {
+      const response = await axios.post("http://localhost:8800/mailer/send-test-email", datos);
+      console.log("Correo enviado:", response.data);
+    } catch (error) {
+      console.error("Error al enviar correo:", error);
+    }
+  };
 
   useEffect(() => {
     if (isCameraActive) {
@@ -27,6 +36,7 @@ function Scanner() {
           try {
             const parsedData = JSON.parse(result.text);
             setAlumno(parsedData);
+            enviarCorreo(parsedData);
             enviarAsistencia(parsedData);
           } catch (error) {
             console.error("Error parsing QR:", error);

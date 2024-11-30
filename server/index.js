@@ -22,6 +22,9 @@ app.use("/admin", adminRouter);
 const fechasRouter = require("./routes/fechas");
 app.use("/fechas", fechasRouter);
 
+const mailerRouter = require("./routes/mailer");
+app.use("/mailer", mailerRouter)
+
 // Ruta para enviar el correo
 app.post('/api/send-test-email', async (req, res) => {
   try {

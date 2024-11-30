@@ -9,7 +9,7 @@ import Scaner from "./asistencia/scaner";
 import Admin from "./admin/admin";
 import Addadmin from "./admin/addadmin";
 import Editadmin from "./admin/editadmin";
-import PrivateRoute from "./Components/PrivateRoute"; // Importa PrivateRoute
+import PrivateRoute from "./components/PrivateRoute" // Importa PrivateRoute
 
 function App() {
   return (

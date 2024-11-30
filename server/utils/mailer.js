@@ -11,11 +11,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function sendEmail() {
+async function sendEmail(datos) {
   try {
+    
     // Consulta los datos del alumno desde la base de datos
     const alumno = await alumnos.findOne({
-      where: { id_alumno: 6 },  // Cambia esto según el criterio que necesites
+      where: { id_alumno: datos.id },  // Cambia esto según el criterio que necesites
       attributes: ['nombre'],  // Aquí puedes incluir más atributos si lo necesitas
     });
 
@@ -24,12 +25,12 @@ async function sendEmail() {
 
     // Crear el contenido del correo
     const subject = 'Correo de prueba con datos';
-    const text = `Hola ${alumno.nombre},\n\nEste es un correo de prueba.\nCorreo enviado a las: ${currentTime}`;
+    const text = `Hola ${datos.nombre},\n\nEste es un correo de prueba.\nCorreo enviado a las: ${currentTime}`;
 
     // Configurar las opciones del correo
     const mailOptions = {
       from: 'kiltrosinc@gmail.com',  // Remitente
-      to: 'nicolas.navarro@alu.ucm.cl',  // Destinatario
+      to: datos.correo_ap,  // Destinatario
       subject: subject,
       text: text,  // El cuerpo del correo incluye los datos obtenidos
     };
