@@ -6,23 +6,27 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        hora: {
-            type: DataTypes.TIME,
-            allowNull: true
-        },
-        curso: {
-            type: DataTypes.STRING(60),
-            allowNull: false
-        },
-        asistencias: {
+        id_alumno: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        asistencia: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+        },
+        day: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        date: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
+
     });
 
     asistencia.associate = (models) => {
         asistencia.belongsTo(models.alumnos, { foreignKey: 'id_alumno' });
-        asistencia.belongsTo(models.fechas, { foreignKey: 'id_fecha' });
     };
 
     return asistencia;

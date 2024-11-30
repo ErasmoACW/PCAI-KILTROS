@@ -19,11 +19,11 @@ app.use("/asistencia", asistenciaRouter);
 const adminRouter = require("./routes/admin");
 app.use("/admin", adminRouter);
 
-const fechasRouter = require("./routes/fechas");
-app.use("/fechas", fechasRouter);
-
 const mailerRouter = require("./routes/mailer");
 app.use("/mailer", mailerRouter)
+
+const curso = require("./routes/curso");
+app.use("/curso", curso)
 
 // Ruta para enviar el correo
 app.post('/api/send-test-email', async (req, res) => {

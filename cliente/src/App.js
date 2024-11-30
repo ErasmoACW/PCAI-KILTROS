@@ -10,6 +10,7 @@ import Admin from "./admin/admin";
 import Addadmin from "./admin/addadmin";
 import Editadmin from "./admin/editadmin";
 import PrivateRoute from "./components/PrivateRoute" // Importa PrivateRoute
+import Addcurso from "./cursos/addcurso";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/Editadmin/:id_admin" element={<Editadmin />} />
             <Route path="/Asistencia" element={<Asistencia />} />
             <Route path="/scaner" element={<Scaner />} />
+            <Route path="/addcurso" element={<Addcurso/>} />
           </Route>
         </Routes>
       </BrowserRouter>
