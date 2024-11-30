@@ -10,7 +10,7 @@ import Scaner from "./asistencia/scaner";
 import Admin from "./admin/admin";
 import Addadmin from "./admin/addadmin";
 import Editadmin from "./admin/editadmin";
-import PrivateRoute from "./components/PrivateRoute"; // Importa PrivateRoute
+import PrivateRoute from "./Components/PrivateRoute"; // Importa PrivateRoute
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
             <Route path="/Addadmin" element={<Addadmin />} />
             <Route path="/Editadmin/:id_admin" element={<Editadmin />} />
             <Route path="/Asistencia" element={<Asistencia />} />
+            <Route path="/Editasistencia/:NombreCompleto" element={<Editasistencia />} />
             <Route path="/scaner" element={<Scaner />} />
           </Route>
         </Routes>

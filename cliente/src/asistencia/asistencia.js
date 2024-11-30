@@ -4,11 +4,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import "./asistencia.css";
 
 function Asistencia() {
+    const getCurrentMonth = () => {
+        const date = new Date();
+        const month = date.getMonth() + 1; // Months are 0-based in JavaScript
+        return month < 10 ? `0${month}` : `${month}`; // Format to MM
+    };
+
     const [fechasUnicas, setFechasUnicas] = useState([]);
     const [fechasFiltered, setFechasFiltered] = useState([]);
     const [dataTransformada, setDataTransformada] = useState({});
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState(getCurrentMonth());
     const navigate = useNavigate();
+
     const convertirAsistencia = (valor) => {
         switch (valor) {
             case 1: return "Presente";
@@ -31,7 +38,6 @@ function Asistencia() {
                 ...new Set(data.map((asistencia) => asistencia.fecha.fecha)),
             ].sort();
             setFechasUnicas(fechas);
-            setFechasFiltered(fechas);
 
             const transformada = {};
             data.forEach((asistencia) => {
@@ -61,7 +67,6 @@ function Asistencia() {
 
     return (
         <div className="asistencia-page-container">
-            {console.log(fechasUnicas.filter((fecha) => `${fecha}`.substring(5, 7)))}
             {/* Header */}
             <header className="asistencia-page-header">
                 <div className="asistencia-page-logo">PCAI</div>
@@ -119,7 +124,7 @@ function Asistencia() {
                                         {asistencias[fecha] || "-"}
                                     </td>
                                 ))}
-                                <td><Link to={`/EditAsistencia/${nombreCompleto}`} className="alumnos-page-edit-btn">Editar</Link></td>
+                                <td><Link to={`/EditAsistencia/${nombreCompleto}%20${searchTerm}`} className="alumnos-page-edit-btn">Editar</Link></td>
                             </tr>
                         ))}
                     </tbody>

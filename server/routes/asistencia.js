@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { asistencia, alumnos, fechas } = require('../models');
-const { where } = require('sequelize');
+const { Op, literal } = require('sequelize');
 
 router.get('/', async (req, res) => {
   try {
@@ -33,21 +33,25 @@ router.get('/', async (req, res) => {
 router.get('/nombre/:NombreCompleto', async (req, res) => {
   try {
     const NombreCompleto = req.params.NombreCompleto;
-    const NombreArray = NombreCompleto.split(' ')
+    const NombreArray = NombreCompleto.split(' ');
+
+    const targetMonth = parseInt(NombreArray[3], 10);
+
     const listofasistencia = await asistencia.findAll({
       attributes: ['asistencias','id_asistencia'],
       include: [
-        {model: alumnos, attributes: ['id_alumno', 'nombre', 'apellido_1', 'apellido_2'],},
-        {model: fechas, attributes: ['id_fecha', 'fecha'],},
+        {model: alumnos, attributes: ['id_alumno', 'nombre', 'apellido_1', 'apellido_2'], as: 'alumno'},
+        {model: fechas, attributes: ['id_fecha', 'fecha'], as: 'fecha'},
       ],
       order: [
-        [{ model: fechas }, 'fecha', 'ASC'],
-        [{ model: alumnos }, 'nombre', 'ASC'],
+        [{ model: fechas, as: 'fecha' }, 'fecha', 'ASC'],
+        [{ model: alumnos, as: 'alumno' }, 'nombre', 'ASC'],
       ],
       where: {
         '$alumno.nombre$': NombreArray[0],
         '$alumno.apellido_1$': NombreArray[1],
-        '$alumno.apellido_2$': NombreArray[2]
+        '$alumno.apellido_2$': NombreArray[2],
+        [Op.and]: literal(`MONTH(fecha.fecha) = ${targetMonth}`),
       },
     });
 
