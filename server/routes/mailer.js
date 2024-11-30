@@ -11,7 +11,7 @@ router.get('/test', (req,res)=>{
 router.post('/send-test-email', async (req, res) => {
   try {
     const datos = req.body
-    if (!datos.id || !datos.nombre || !datos.apellido_1 || !datos.apellido_2 || !datos.correo_ap) {
+    if (!datos.id_alumno || !datos.nombre || !datos.apellido_1 || !datos.apellido_2 || !datos.correo_ap) {
       return res.status(400).json({ message: 'Faltan datos requeridos ' });
     }
     console.log("miau")

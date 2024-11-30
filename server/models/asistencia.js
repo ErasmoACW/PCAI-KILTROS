@@ -6,14 +6,6 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        hora: {
-            type: DataTypes.TIME,
-            allowNull: true
-        },
-        curso: {
-            type: DataTypes.STRING(60),
-            allowNull: false
-        },
         asistencias: {
             type: DataTypes.INTEGER,
             allowNull: false

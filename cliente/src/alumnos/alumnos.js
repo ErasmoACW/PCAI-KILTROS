@@ -48,7 +48,7 @@ const Alumnos = () => {
     const downloadQR = async (alumno) => {
         try {
             const data = JSON.stringify({
-                id: alumno.id_alumno,
+                id_alumno: alumno.id_alumno,
                 nombre: alumno.nombre,
                 apellido_1: alumno.apellido_1,
                 apellido_2: alumno.apellido_2,

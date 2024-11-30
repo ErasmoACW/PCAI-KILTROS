@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { asistencia, alumnos, fechas } = require('../models');
 const { Op, literal } = require('sequelize');
+const {getidfecha} = require('../utils/datosasistencia')
 
 router.get('/', async (req, res) => {
   try {
@@ -87,5 +88,42 @@ router.put("/:id_alumno", async (req, res) => {
     res.status(500).json({ error: 'An error occurred while updating asistencias' });
   }
 });
+
+
+//Insertar mediante qr
+router.post("/add_asistencia", async (req, res) => {
+  try {
+    // Extraer id_alumno del req.body
+    const { id_alumno } = req.body;
+    if (!id_alumno) {
+      return res.status(400).json({ error: "El campo 'id_alumno' es obligatorio." });
+    }
+
+    // Obtener la fecha actual en formato 'sv-SE'
+    const today = new Date();
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const formattedDate = today.toLocaleDateString('sv-SE', options);
+
+    // Obtener id_fecha usando una función externa
+    const id_fecha = await getidfecha(formattedDate);
+
+    // Construir el objeto para insertar en asistencia
+    const nuevoRegistro = {
+      id_alumno,
+      id_fecha,
+      asistencias: 1, // Entero que representa 1
+    };
+
+    // Guardar el registro en la base de datos
+    await asistencia.create(nuevoRegistro);
+
+    // Responder con el objeto creado o con un mensaje de éxito
+    res.json({data: nuevoRegistro });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al registrar la asistencia" });
+  }
+});
+
 
 module.exports = router;

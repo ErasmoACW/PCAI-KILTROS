@@ -103,7 +103,6 @@ function Asistencia() {
                             <option value='11'>Noviembre</option>
                             <option value='12'>Diciembre</option>
                         </select>
-                        <Link to="/addalumnos" className="alumnos-page-btn">Agregar Alumnos</Link>
                     </div>
                 <table className="asistencia-page-table">
                     <thead>

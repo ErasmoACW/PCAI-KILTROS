@@ -18,8 +18,8 @@ function Scanner() {
       console.error("Error al registrar asistencia:", error);
     }
   };
-  
-  const enviarCorreo = async (datos) =>{
+
+  const enviarCorreo = async (datos) => {
     try {
       const response = await axios.post("http://localhost:8800/mailer/send-test-email", datos);
       console.log("Correo enviado:", response.data);
@@ -31,18 +31,18 @@ function Scanner() {
   useEffect(() => {
     if (isCameraActive) {
       codeReader.current
-      .decodeFromVideoDevice(null, videoRef.current, (result) => {
-        if (result) {
-          try {
-            const parsedData = JSON.parse(result.text);
-            setAlumno(parsedData);
-            enviarCorreo(parsedData);
-            enviarAsistencia(parsedData);
-          } catch (error) {
-            console.error("Error parsing QR:", error);
+        .decodeFromVideoDevice(null, videoRef.current, (result) => {
+          if (result) {
+            try {
+              const parsedData = JSON.parse(result.text); // Convierte el texto en un objeto
+              setAlumno(parsedData);
+              enviarCorreo(parsedData);
+              enviarAsistencia(parsedData);
+            } catch (error) {
+              console.error("Error parsing QR:", error);
+            }
           }
-        }
-      });
+        });
     }
 
     return () => {

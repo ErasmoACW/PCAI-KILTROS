@@ -16,7 +16,7 @@ async function sendEmail(datos) {
     
     // Consulta los datos del alumno desde la base de datos
     const alumno = await alumnos.findOne({
-      where: { id_alumno: datos.id },  // Cambia esto según el criterio que necesites
+      where: { id_alumno: datos.id_alumno },  // Cambia esto según el criterio que necesites
       attributes: ['nombre','apellido_1','apellido_2','correo_ap','nombre_ap','apellido_ap'],  // Aquí puedes incluir más atributos si lo necesitas
     });
 
