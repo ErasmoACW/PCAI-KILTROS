@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
 import './editasistencia.css';
 
 const Editasistencia = () => {
     let { NombreCompleto } = useParams();
-    const navigate = useNavigate();
 
     const [Data, setData] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
@@ -105,7 +102,7 @@ const Editasistencia = () => {
                 </div>
             </header>
             <main className="editalumnos-page-main-content">
-                {console.log(Object.values(editedData)[0]?.asistencias)}
+                {console.log(Object.values(editedData)[0])}
                 <h1><button className="editalumnos-form-button" onClick={toggleEditSave}>
                     {isEditing ? 'Guardar Cambios' : 'Editar'}
                 </button></h1>
@@ -122,8 +119,8 @@ const Editasistencia = () => {
                                 <td>{asi.fecha.fecha.substring(0,10)}</td>
                                 <td>{isEditing ? (
                                     <select 
-                                        value={Object.values(editedData)[asi.id_asistencia]?.asistencias || asi.asistencias}
-                                        onChange={(e) => handleInputChange(e, asi.id_asistencia, asi.asistencias)}>
+                                        value={editedData[asi.id_asistencia]?.asistencias || asi.asistencias}
+                                        onChange={(e) => handleInputChange(e, asi.id_asistencia, 'asistencias')}>
                                         <option value='Presente'>Presente</option>
                                         <option value='Ausente'>Ausente</option>
                                         <option value='Justificado'>Justificado</option>

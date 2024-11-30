@@ -80,7 +80,7 @@ function Asistencia() {
                                 <td>{nombreCompleto}</td>
                                 {fechasUnicas.map((fecha) => (
                                     <td key={fecha} className="asistencia-page-cell">
-                                        {asistencias[fecha] || "Ausente"}
+                                        {asistencias[fecha] || "-"}
                                     </td>
                                 ))}
                                 <Link to={`/EditAsistencia/${nombreCompleto}`} className="alumnos-page-edit-btn">Editar</Link>
