@@ -6,6 +6,7 @@ import Addalumnos from "./alumnos/addalumnos";
 import Editalumnos from "./alumnos/editalumnos";
 
 import Asistencia from "./asistencia/asistencia";
+import Editasistencia from "./asistencia/editasistencia";
 import Login from "./login/login";
 import Scaner from "./asistencia/scaner";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/Editadmin/:id_admin" element={<Editadmin />} />
           
           <Route path="/Asistencia" element={<Asistencia />} />
+          <Route path="/Editasistencia/:NombreCompleto" element={<Editasistencia />} />
           <Route path="/" element={<Login />} />
           <Route path="/scaner" element = {<Scaner/>} />
           

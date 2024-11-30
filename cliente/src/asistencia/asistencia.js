@@ -69,8 +69,9 @@ function Asistencia() {
                         <tr>
                             <th>Nombre completo</th>
                             {fechasUnicas.map((fecha) => (
-                                <th key={fecha}>{fecha}</th>
+                                <th key={fecha}>{fecha.substring(0, 10)}</th>
                             ))}
+                            <th>Editar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,9 +80,10 @@ function Asistencia() {
                                 <td>{nombreCompleto}</td>
                                 {fechasUnicas.map((fecha) => (
                                     <td key={fecha} className="asistencia-page-cell">
-                                        {asistencias[fecha] || "-"}
+                                        {asistencias[fecha] || "Ausente"}
                                     </td>
                                 ))}
+                                <Link to={`/EditAsistencia/${nombreCompleto}`} className="alumnos-page-edit-btn">Editar</Link>
                             </tr>
                         ))}
                     </tbody>
