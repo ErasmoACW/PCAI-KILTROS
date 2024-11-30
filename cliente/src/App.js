@@ -4,12 +4,13 @@ import Alumnos from "./alumnos/alumnos";
 import Addalumnos from "./alumnos/addalumnos";
 import Editalumnos from "./alumnos/editalumnos";
 import Asistencia from "./asistencia/asistencia";
+import Editasistencia from "./asistencia/editasistencia";
 import Login from "./login/login";
 import Scaner from "./asistencia/scaner";
 import Admin from "./admin/admin";
 import Addadmin from "./admin/addadmin";
 import Editadmin from "./admin/editadmin";
-import PrivateRoute from "./components/PrivateRoute" // Importa PrivateRoute
+import PrivateRoute from "./components/PrivateRoute"; // Importa PrivateRoute
 
 function App() {
   return (
