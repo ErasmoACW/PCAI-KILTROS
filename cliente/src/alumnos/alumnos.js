@@ -52,6 +52,8 @@ const Alumnos = () => {
                 nombre: alumno.nombre,
                 apellido_1: alumno.apellido_1,
                 apellido_2: alumno.apellido_2,
+                nombre_ap: alumno.nombre_ap,
+                apellido_ap: alumno.apellido_ap,
                 correo_ap: alumno.correo_ap,
                 curso: alumno.curso
             });
@@ -73,7 +75,7 @@ const Alumnos = () => {
             const dataUrl = canvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.href = dataUrl;
-            link.download = `QR-${alumno.nombre}-${alumno.apellido_1}.png`;
+            link.download = `QR-${alumno.nombre}-${alumno.apellido_1}-${alumno.apellido_2}.png`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);

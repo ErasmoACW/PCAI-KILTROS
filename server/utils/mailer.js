@@ -17,15 +17,17 @@ async function sendEmail(datos) {
     // Consulta los datos del alumno desde la base de datos
     const alumno = await alumnos.findOne({
       where: { id_alumno: datos.id },  // Cambia esto según el criterio que necesites
-      attributes: ['nombre'],  // Aquí puedes incluir más atributos si lo necesitas
+      attributes: ['nombre','apellido_1','apellido_2','correo_ap','nombre_ap','apellido_ap'],  // Aquí puedes incluir más atributos si lo necesitas
     });
 
     // Obtener la hora actual en formato adecuado
-    const currentTime = new Date().toLocaleString();
+    const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    console.log(currentTime);
+    
 
     // Crear el contenido del correo
-    const subject = 'Correo de prueba con datos';
-    const text = `Hola ${datos.nombre},\n\nEste es un correo de prueba.\nCorreo enviado a las: ${currentTime}`;
+    const subject = 'Notificacion de Ingreso';
+    const text = `Buenos dia Sr(a) ${datos.nombre_ap} ${datos.apellido_ap},\n\nSe le informa que su pupilo(a) ${datos.nombre} ${datos.apellido_1} ${datos.apellido_2}, ingreso al establecimiento a las: ${currentTime} horas`;
 
     // Configurar las opciones del correo
     const mailOptions = {
