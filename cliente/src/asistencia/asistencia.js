@@ -8,7 +8,7 @@ function Asistencia() {
     const [fechasFiltered, setFechasFiltered] = useState([]);
     const [dataTransformada, setDataTransformada] = useState({});
     const [searchTerm, setSearchTerm] = useState("");
-
+    const navigate = useNavigate();
     const convertirAsistencia = (valor) => {
         switch (valor) {
             case 1: return "Presente";
