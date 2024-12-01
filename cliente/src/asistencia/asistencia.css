@@ -1,4 +1,3 @@
-/* asistencia.css */
 /* Reset de márgenes y rellenos para todos los elementos */
 * {
     margin: 0;
@@ -76,55 +75,77 @@ html, body {
     background-color: #777;
 }
 
+/* Botón de cerrar sesión */
+
+
+.home-btn:hover {
+    background-color: #b02a37; /* Rojo más oscuro */
+}
+
 /* Contenido principal de la página de Asistencia */
 .asistencia-page-main-content {
     padding: 20px;
     width: 100%;
-    display: block; /* Cambia el display de flex a block para que los elementos se alineen hacia la parte superior */
+    display: block; /* Asegura que los elementos se alineen hacia la parte superior */
 }
 
-/* Estilo para el formulario o área de registro de asistencia */
-.asistencia-page-register {
-    margin-top: 0; /* Asegura que no haya espacio arriba */
-    padding: 0;
+/* Dropdown para selección de mes */
+.alumnos-page-search-bar {
+    width: 200px; /* Ancho fijo */
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Contenedor principal de la tabla con scroll */
+.asistencia-table-container {
+    width: 100%; /* Ajusta al ancho del contenedor principal */
+    max-height: 400px; /* Altura máxima de la tabla visible */
+    overflow-x: auto; /* Scroll horizontal */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+    border: 1px solid #ddd; /* Borde que separa la tabla */
+    margin-top: 20px; /* Espaciado entre otros elementos */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo para destacar la tabla */
 }
 
-/* Si tienes una sección para el nombre completo, aplica lo siguiente */
-.asistencia-page-fullname {
-    margin-top: 0; /* Elimina cualquier espacio superior */
-    padding: 0;
-}
-
-/* Estilos para la tabla de asistencia */
+/* Estilo para la tabla */
 .asistencia-page-table {
-    width: 100%;
+    min-width: 1200px; /* Ancho mínimo para que la tabla no se comprima */
     border-collapse: collapse;
+    table-layout: auto; /* Permite que las columnas tengan ancho dinámico */
+    font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
+    background-color: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    table-layout: fixed; /* Asegura que todas las columnas tengan el mismo tamaño */
 }
 
-/* Estilos para celdas y cabecera de la tabla */
-.asistencia-page-table th, .asistencia-page-table td {
+/* Cabecera de la tabla */
+.asistencia-page-table th {
     padding: 12px;
+    background-color: #f1f3f59d; /* Fondo semi-transparente */
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid lightgray;
+}
+
+/* Celdas de la tabla */
+.asistencia-page-table td {
+    padding: 10px;
     text-align: center;
     border-left: 1px solid lightgray; /* Aplica borde izquierdo */
     border-right: 1px solid lightgray; /* Aplica borde derecho */
-    word-wrap: break-word; /* Para que el texto largo se ajuste */
+    word-wrap: break-word; /* Ajusta texto largo */
 }
 
-/* Estilo para la cabecera de la tabla */
-.asistencia-page-table th {
-    border-top: 1px solid lightgray;
-    background-color: #f1f3f59d;
-    font-weight: bold;
-}
 
-/* Estilo para las filas pares de la tabla */
+/* Alternar color en filas */
 .asistencia-page-table tr:nth-child(even) {
     background-color: #f8f9fa;
 }
 
-/* Estilo de hover para las filas de la tabla */
+/* Hover en filas */
 .asistencia-page-table tr:hover {
     background-color: #e9ecef;
 }
@@ -133,4 +154,20 @@ html, body {
     border-bottom: 1px solid lightgray;
 }
 
+/* Botones dentro de la tabla */
+.alumnos-page-edit-btn {
+    background-color: #007bff; /* Azul estándar */
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease;
+}
 
+/* Hover en botones de editar */
+.alumnos-page-edit-btn:hover {
+    background-color: #0056b3; /* Azul oscuro */
+}

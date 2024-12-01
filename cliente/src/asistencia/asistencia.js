@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
 import "./asistencia.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faX } from '@fortawesome/free-solid-svg-icons'; // Puedes importar otros íconos si los necesitas
+
 
 function Asistencia() {
     const getCurrentMonth = () => {
@@ -18,10 +21,14 @@ function Asistencia() {
 
     const convertirAsistencia = (valor) => {
         switch (valor) {
-            case 1: return "Presente";
-            case 2: return "Ausente";
-            case 3: return "Justificado";
-            default: return "-";
+            case 1:
+                return <FontAwesomeIcon icon={faCheck} style={{ color: "green" }} />; // Ícono de "Presente"
+            case 2:
+                return <FontAwesomeIcon icon={faX} style={{ color: "red" }} />; // Ícono de "Ausente"
+            case 3:
+                return <FontAwesomeIcon icon={faCheck} style={{ color: "orange" }} />; // Ícono de "Justificado"
+            default:
+                return "-";
         }
     };
 
@@ -76,8 +83,7 @@ function Asistencia() {
                     <Link to="/alumnos" className="asistencia-page-btn">Alumnos</Link>
                     <Link to="/asistencia" className="asistencia-page-btn">Asistencia</Link>
                     <Link to="/scaner" className="asistencia-page-btn">Escaner QR</Link>
-                    {/* Botón de Cerrar Sesión con la función handleLogout */}
-                    <button onClick={handleLogout} className="home-btn">Cerrar Sesión</button>
+                    <button onClick={handleLogout} className="asistencia-page-btn">Cerrar Sesión</button>
                 </div>
             </header>
 
@@ -85,53 +91,56 @@ function Asistencia() {
             <main className="asistencia-page-main-content">
                 <h1>Registro de Asistencia</h1>
                 <div className="alumnos-page-search-actions">
-                        <select className="alumnos-page-search-bar"
-                            placeholder="Seleccione el mes"
-                            value={searchTerm} 
-                            onChange={handleSearchChange}
-                        >
-                            <option value='01'>Enero</option>
-                            <option value='02'>Febrero</option>
-                            <option value='03'>Marzo</option>
-                            <option value='04'>Abril</option>
-                            <option value='05'>Mayo</option>
-                            <option value='06'>Junio</option>
-                            <option value='07'>Julio</option>
-                            <option value='08'>Agosto</option>
-                            <option value='09'>Septiembre</option>
-                            <option value='10'>Octubre</option>
-                            <option value='11'>Noviembre</option>
-                            <option value='12'>Diciembre</option>
-                        </select>
-                    </div>
-                <table className="asistencia-page-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre completo</th>
-                            {fechasFiltered.map((fecha) => (
-                                <th key={fecha}>{fecha.substring(8, 10)}/{fecha.substring(5, 7)}</th>
-                            ))}
-                            <th>Editar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {Object.entries(dataTransformada).map(([nombreCompleto, asistencias]) => (
-                            <tr key={nombreCompleto}>
-                                <td>{nombreCompleto}</td>
+                    <select
+                        className="alumnos-page-search-bar"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    >
+                        <option value='01'>Enero</option>
+                        <option value='02'>Febrero</option>
+                        <option value='03'>Marzo</option>
+                        <option value='04'>Abril</option>
+                        <option value='05'>Mayo</option>
+                        <option value='06'>Junio</option>
+                        <option value='07'>Julio</option>
+                        <option value='08'>Agosto</option>
+                        <option value='09'>Septiembre</option>
+                        <option value='10'>Octubre</option>
+                        <option value='11'>Noviembre</option>
+                        <option value='12'>Diciembre</option>
+                    </select>
+                </div>
+                <div className="asistencia-table-container">
+                    <table className="asistencia-page-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre completo</th>
                                 {fechasFiltered.map((fecha) => (
-                                    <td key={fecha} className="asistencia-page-cell">
-                                        {asistencias[fecha] || "-"}
-                                    </td>
+                                    <th key={fecha}>{fecha.substring(8, 10)}/{fecha.substring(5, 7)}</th>
                                 ))}
-                                <td><Link to={`/EditAsistencia/${nombreCompleto}%20${searchTerm}`} className="alumnos-page-edit-btn">Editar</Link></td>
+                                <th>Editar</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {Object.entries(dataTransformada).map(([nombreCompleto, asistencias]) => (
+                                <tr key={nombreCompleto}>
+                                    <td>{nombreCompleto}</td>
+                                    {fechasFiltered.map((fecha) => (
+                                        <td key={fecha} className="asistencia-page-cell">
+                                            {asistencias[fecha] || "-"}
+                                        </td>
+                                    ))}
+                                    <td>
+                                        <Link to={`/EditAsistencia/${nombreCompleto}%20${searchTerm}`} className="alumnos-page-edit-btn">Editar</Link>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </main>
         </div>
     );
 }
 
 export default Asistencia;
-

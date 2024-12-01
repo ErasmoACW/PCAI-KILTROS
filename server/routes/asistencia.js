@@ -7,7 +7,7 @@ const {getidfecha} = require('../utils/datosasistencia')
 router.get('/', async (req, res) => {
   try {
     const listofasistencia = await asistencia.findAll({
-      attributes: ['asistencias','id_asistencia'],
+      attributes: ['asistencias','id_asistencia','createdAt'],
       include: [
         {
           model: alumnos,
@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
         },
       ],
       order: [
-        [{ model: fechas }, 'fecha', 'ASC'],
-        [{ model: alumnos }, 'nombre', 'ASC'],
+        [{ model: fechas }, 'fecha', 'DESC'],
+        [{ model: alumnos }, 'nombre', 'DESC'],
       ],
     });
 

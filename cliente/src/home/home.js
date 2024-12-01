@@ -58,9 +58,8 @@ const Home = () => {
             {asistencias.map((asistencia, index) => (
               <div key={index} className="home-terminal-line">
                 <span>
-                  {`[${new Date().toLocaleTimeString()}]`} El/La estudiante {asistencia.alumno.nombre}{' '}
-                  {asistencia.alumno.apellido_1} {asistencia.alumno.apellido_2} esta {asistencia.asistencias ? 'Presente' : 'Ausente'} con fecha{' '}
-                  {asistencia.fecha.fecha} 
+                  {`[`+asistencia.createdAt+`]`} El/La estudiante {asistencia.alumno.nombre}{' '}
+                  {asistencia.alumno.apellido_1} {asistencia.alumno.apellido_2} esta {asistencia.asistencias ? 'Presente' : 'Ausente'}
                 </span>
               </div>
             ))}
