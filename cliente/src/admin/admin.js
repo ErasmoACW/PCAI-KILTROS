@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './admin.css';
+import Header from '../components/header';
 
 const Admin = () => {
     const [listofadmin, setlistofadmin] = useState([]);
@@ -15,11 +16,6 @@ const Admin = () => {
             });
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');  // Eliminar el token
-        navigate('/');  // Redirigir al home o login
-    };
-
     useEffect(() => {
         axios.get("http://localhost:8800/admin").then((response) => {
             setlistofadmin(response.data);
@@ -29,18 +25,8 @@ const Admin = () => {
     return (
         <div className="admin-page-container">
             {/* Header */}
-            <header className="admin-page-header">
-                <div className="admin-page-logo">PCAI</div>
-                <div className="admin-page-buttons">
-                    <Link to="/home" className="admin-page-btn">Home</Link>
-                    <Link to="/admin" className="admin-page-btn">Admins</Link>
-                    <Link to="/alumnos" className="admin-page-btn">Alumnos</Link>
-                    <Link to="/asistencia" className="admin-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="admin-page-btn">Escaner QR</Link>
-                    {/* Botón de cerrar sesión con el evento handleLogout */}
-                    <button onClick={handleLogout} className="home-btn">Cerrar Sesión</button>
-                </div>
-            </header>
+            <Header/>
+           
 
             {/* Main Content */}
             <main className="admin-page-main-content">

@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import './editalumnos.css';
+import Header from '../components/header';
 
 const Editalumnos = () => {
     let { id_alumno } = useParams();
@@ -46,17 +47,7 @@ const Editalumnos = () => {
     return (
         <div className="editalumnos-page-container">
             {/* Header */}
-            <header className="editalumnos-page-header">
-                <div className="editalumnos-page-logo">PCAI</div>
-                <div className="editalumnos-page-buttons">
-                    <Link to="/home" className="editalumnos-page-btn">Home</Link>
-                    <Link to="/admin" className="editalumnos-page-btn">Admins</Link>
-                    <Link to="/alumnos" className="editalumnos-page-btn">Alumnos</Link>
-                    <Link to="/asistencia" className="editalumnos-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="editalumnos-page-btn">Escaner QR</Link>
-                    <Link to="/" className="editalumnos-page-btn">Cerrar Sesion</Link>
-                </div>
-            </header>
+            <Header />
             <main className="editalumnos-page-main-content">
  
                 <Formik
@@ -65,7 +56,9 @@ const Editalumnos = () => {
                     initialValues={initialValues}
                     validationSchema={validationSchema}
                 >
+                    
                     <Form className="editalumnos-form">
+                    <h2>Editor de Alumno</h2>
                         <div className="form-group">
                             <label htmlFor="nombre" className="form-label">Nombre:</label>
                             <Field
@@ -140,6 +133,7 @@ const Editalumnos = () => {
                                 placeholder="Curso"
                                 className="form-input"
                                 autoComplete="off"
+                                
                             />
                             <ErrorMessage name="curso" component="span" className="form-error" />
                         </div>

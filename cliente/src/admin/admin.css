@@ -1,73 +1,59 @@
-/* Reset de márgenes y rellenos para todos los elementos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Estilos globales */
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Sour Gummy', sans-serif;
-}
-
 /* Contenedor principal */
 .admin-page-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-image: url('../ima/3.png'); /* Ruta de la imagen de fondo */
-    background-size: cover; /* La imagen cubre todo el contenedor */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-}
-
-/* Estilo para el encabezado */
-.admin-page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(51, 51, 51, 0.8); /* Fondo oscuro con algo de transparencia */
-    color: #fff;
-    padding: 1rem;
-}
-
-/* Logo */
-.admin-page-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* Botones de navegación */
-.admin-page-buttons {
-    display: flex;
-}
-
-.admin-page-btn {
-    background-color: #555;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-}
-
-.admin-page-btn:hover {
-    background-color: #777;
+    min-height: 100%; /* Ajusta la altura mínima */
 }
 
 /* Contenido principal */
 .admin-page-main-content {
     padding: 20px;
-    background-color: #f1f3f59d; /* Fondo blanco con algo de transparencia para legibilidad */
+    background-color: #f1f3f59d; /* Fondo blanco con algo de transparencia */
+    margin: 20px auto; /* Centra el contenido horizontalmente */
+    width: 95%; /* Hace que el contenedor ocupe todo el ancho de la pantalla */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el encabezado */
+.admin-page-header-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye espacio entre elementos */
+    align-items: center; /* Centra verticalmente */
+    margin-bottom: 20px;
+}
+
+.admin-page-title {
+    font-size: 24px;
+    color: #444;
+}
+
+/* Botón de agregar admin */
+.admin-page-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.admin-page-btn:hover {
+    background-color: #0056b3;
 }
 
 /* Tabla */
+.admin-page-table-container {
+    width: 100%;
+    overflow-x: auto; 
+    margin-top: 20px;
+}
+
 .admin-page-table {
     width: 100%;
+    min-width: 1200px; /* Ajusta el ancho mínimo de la tabla */
     border-collapse: collapse;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -91,9 +77,9 @@ html, body {
     background-color: #e9ecef;
 }
 
-/* Botones */
-.admin-page-edit-btn,
-.admin-page-delete-btn {
+/* Botones en la tabla */
+.admin-page-table td button {
+    width: 100%; /* Hace que los botones se ajusten al tamaño de la celda */
     padding: 6px 12px;
     border: none;
     cursor: pointer;
@@ -119,10 +105,17 @@ html, body {
     background-color: #c82333;
 }
 
-/* Contenedor para el encabezado y la parte superior */
-.admin-page-header-container {
-    display: flex;
-    justify-content: space-between; /* Distribuye espacio entre elementos */
-    align-items: center; /* Centra verticalmente */
-    margin-bottom: 20px;
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .admin-page-table {
+        font-size: 14px; /* Reduce el tamaño de la fuente en pantallas más pequeñas */
+    }
+
+    .admin-page-btn {
+        padding: 8px 16px; /* Reduce el tamaño del botón */
+    }
+
+    .admin-page-search {
+        width: 200px; /* Ajusta el tamaño del campo de búsqueda */
+    }
 }

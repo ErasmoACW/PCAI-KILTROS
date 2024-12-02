@@ -1,99 +1,78 @@
-/* home.css */
-
-* {
+/* Estilo para el cuerpo y contenedor */
+body {
+  color: #333;
+  background-color: #f0f1e0;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
 .home-container {
   display: flex;
   flex-direction: column;
-  background-image: url("../ima/3.png"); /* Asegúrate de que la ruta sea correcta */
   background-size: cover;
   background-position: center;
   height: 100vh;
   background-repeat: no-repeat;
 }
 
-.home-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(51, 51, 51, 0.7); /* Fondo oscuro con opacidad */
-  color: #fff;
-  padding: 1rem;
-  width: 100%;
-}
-
-.home-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.home-buttons {
-  display: flex;
-}
-
-.home-btn {
-  background-color: #555;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  margin-left: 0.5rem;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-}
-
-.home-btn:hover {
-  background-color: #777;
-}
-
 .home-main-content {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgba(240, 240, 240, 0.45);
   width: 100%;
+  padding: 20px;
 }
 
 .home-console-container {
-  width: 80%;
-  height: 80%;
-  border: 2px dashed #000;
-  background-color: #1e1e1e;
-  padding: 1rem;
+  width: 90%;
+  height: auto;
+  max-height: 80%;
+  background: linear-gradient(145deg, #2a2a2a, #444444);
+  border-radius: 12px;
+  padding: 2rem;
   overflow-y: auto;
-  color: #0f0f0f;
+  color: #e0e0e0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  position: relative;
+  border: 2px solid #7f7f7f;
+}
+
+/* Personalización de la scrollbar */
+.home-console-container::-webkit-scrollbar {
+  width: 10px; /* Ancho de la scrollbar */
+}
+
+.home-console-container::-webkit-scrollbar-track {
+  background: #333; /* Fondo de la pista de la scrollbar */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+.home-console-container::-webkit-scrollbar-thumb {
+  background: #7f7f7f; /* Color del pulgar (la parte que se mueve) */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); /* Sombra interna para darle profundidad */
+}
+
+.home-console-container::-webkit-scrollbar-thumb:hover {
+  background: #ff8c00; /* Cambia el color del pulgar al pasar el ratón */
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); /* Sombra más intensa en hover */
 }
 
 .console-content {
-  color: #00ff00; /* Color de texto verde */
-  font-family: 'Courier New', Courier, monospace; /* Fuente estilo consola */
-  white-space: pre-wrap; /* Mantiene los saltos de línea */
-}
-.home-console-container {
-  background-color: #1e1e1e;
-  color: #00ff00;
-  padding: 1em;
-  border-radius: 8px;
-  max-height: 400px;
-  overflow-y: auto;
-  font-family: monospace;
+  color: #7f7f7f;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  font-size: 1.2em;
 }
 
 .home-terminal {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0.7em;
 }
 
 .home-terminal-line {
@@ -101,7 +80,45 @@ html, body {
   word-wrap: break-word;
 }
 
+.home-terminal-line:nth-child(odd) {
+  color: #7f7f7f;
+  text-shadow: 0 0 3px #7f7f7f;
+}
+
+.home-terminal-line:nth-child(even) {
+  color: #ff8c00;
+  text-shadow: 0 0 3px #ff8c00;
+}
+
 .error-message {
-  color: red;
+  color: #ff6f61;
   font-weight: bold;
+  text-shadow: 0 0 5px #ff6f61;
+}
+
+/* Estilo para el título */
+.home-console-container h2 {
+  font-size: 2em;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 5px #7f7f7f, 0 0 10px #7f7f7f;
+}
+
+/* Ajuste para los inputs */
+.home-console-container input {
+  padding: 10px;
+  margin: 1rem 0;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #7f7f7f;
+  background-color: #333;
+  color: #e0e0e0;
+  font-size: 1.1em;
+  box-sizing: border-box;
+}
+
+.home-console-container input:focus {
+  outline: none;
+  border-color: #ff8c00;
+  box-shadow: 0 0 6px #ff8c00;
 }

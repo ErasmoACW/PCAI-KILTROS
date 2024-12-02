@@ -1,192 +1,126 @@
-/* alumnos.css */
-/* Reset de márgenes y rellenos para todos los elementos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-/* Estilos globales para html y body */
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Sour Gummy', sans-serif; /* Fuente personalizada */
-}
-
-/* Contenedor principal para la página de Alumnos */
-.alumnos-page-container {
+/* Elimina el 100vh en el contenedor principal */
+.alumnos-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-image: url('../ima/3.png'); /* Ruta a la imagen de fondo */
-    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    min-height: 100%; /* Ajuste para que ocupe al menos el 100% de la pantalla */
 }
 
-/* Estilo para el encabezado */
-.alumnos-page-header {
+.alumnos-main {
+    padding: 20px;
+    margin: 20px auto; /* Centra el contenedor horizontalmente */
+    width: 95%; /* Hace que el contenedor ocupe todo el ancho de la pantalla */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cambia los márgenes y ajusta la disposición de la cabecera */
+.alumnos-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(51, 51, 51, 0.8); /* Fondo oscuro con algo de transparencia */
-    color: #fff;
-    padding: 1rem;
+    margin-bottom: 20px;
 }
 
-/* Logo dentro del encabezado */
-.alumnos-page-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+.alumnos-header h1 {
+    font-size: 24px;
+    color: #444;
 }
 
-/* Contenedor para los botones de navegación */
-.alumnos-page-buttons {
+.alumnos-actions {
     display: flex;
+    gap: 10px;
 }
 
-/* Estilo para los botones de navegación */
-.alumnos-page-btn {
-    background-color: #555;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: medium;
-    text-decoration: none;
-}
-
-/* Efecto hover para los botones de navegación */
-.alumnos-page-btn:hover {
-    background-color: #777;
-}
-
-/* Contenido principal de la página de Alumnos */
-.alumnos-page-main-content {
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con algo de transparencia */
-    border-radius: 8px; /* Bordes redondeados para el contenido */
-}
-
-/* Contenedor para los filtros y búsqueda */
-.alumnos-page-filter-container {
-    display: flex; /* Habilitar flexbox */
-    flex-direction: column; /* Estructura vertical */
-    align-items: flex-start;
-    width: 100%;
-    padding: 1rem 0;
-    margin-bottom: 10px;
-}
-
-/* Contenedor de búsqueda y botones */
-.alumnos-page-search-actions {
-    display: flex;
-    justify-content: space-between; /* Elementos a los extremos */
-    align-items: center; /* Centrar verticalmente */
-    width: 100%;
-    margin-top: 20px;
-    gap: 1rem; /* Espacio entre el input y el botón */
-}
-
-/* Estilo para la barra de búsqueda */
-.alumnos-page-search-bar {
-    flex: 1; /* El input toma todo el espacio disponible */
-    max-width: 400px; /* Máximo ancho */
-    height: 40px;
-    padding: 0 10px;
-    font-size: 1rem;
+.alumnos-search {
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 300px; /* Ajusta el ancho del campo de búsqueda */
 }
 
-/* Efecto de foco para la barra de búsqueda */
-.alumnos-page-search-bar:focus {
-    border-color: #007bff;
-    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
-    outline: none;
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
 }
 
-/* Estilos para la tabla */
-.alumnos-page-table {
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-edit {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-qr {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+/* Estilo para la tabla, asegurando que solo esta tenga un scrollbar */
+.alumnos-table-container {
     width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    table-layout: fixed; /* Asegura que todas las columnas tengan el mismo tamaño */
+    overflow-x: auto; 
+    margin-top: 20px;
+    max-height: 600px;
+    min-width: 1200px; /* Aumento el ancho mínimo de la tabla */
 }
 
-/* Estilos para celdas y cabecera de la tabla */
-.alumnos-page-table th, .alumnos-page-table td {
+.alumnos-table {
+    width: 100%;
+    min-width: 1200px; /* Aumento el ancho mínimo de la tabla */
+    border-collapse: collapse;
+}
+
+.alumnos-table th,
+.alumnos-table td {
     padding: 12px;
     text-align: center;
-    border-left: 1px solid lightgray; /* Aplica borde izquierdo */
-    border-right: 1px solid lightgray; /* Aplica borde derecho */
-    word-wrap: break-word; /* Para que el texto largo se ajuste */
+    border-bottom: 1px solid #ddd;
 }
 
-/* Estilo para la cabecera de la tabla */
-.alumnos-page-table th {
-    border-top: 1px solid lightgray;
-    background-color: #f1f3f5;
+.alumnos-table th {
+    background-color: #f8f9fa;
     font-weight: bold;
 }
 
-/* Estilo para las filas pares de la tabla */
-.alumnos-page-table tr:nth-child(even) {
-    background-color: #f1f3f58a;
+.alumnos-table tr:hover {
+    background-color: #f1f1f1;
 }
 
-/* Estilo de hover para las filas de la tabla */
-.alumnos-page-table tr:hover {
-    background-color: #e9ecef5b;
+/* Ajustes de los botones de la tabla */
+.alumnos-table td button {
+    width: 100%; /* Hace que los botones se ajusten al tamaño de la celda */
 }
 
-/* Estilo para la última fila (con borde inferior) */
-.alumnos-page-table tr:last-child {
-    border-bottom: 1px solid lightgray;
+/* Ajuste general de los elementos dentro del contenedor */
+.alumnos-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ajusta el contenido hacia la parte superior */
 }
 
-/* Estilo para los botones de la tabla */
-.alumnos-page-edit-btn,
-.alumnos-page-delete-btn,
-.alumnos-page-qr-btn {
-    padding: 6px 12px;
-    border: none;
-    cursor: pointer;
-    font-family: 'Sour Gummy', sans-serif;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
+/* Mejoras en la disposición de la tabla */
+@media (max-width: 768px) {
+    .alumnos-table {
+        font-size: 14px; /* Reduce el tamaño de la fuente en pantallas más pequeñas */
+    }
 
-/* Estilo para el botón de editar (verde) */
-.alumnos-page-edit-btn {
-    background-color: #28a745;
-    color: white;
-}
-
-.alumnos-page-edit-btn:hover {
-    background-color: #218838;
-}
-
-/* Estilo para el botón de eliminar (rojo) */
-.alumnos-page-delete-btn {
-    background-color: #dc3545;
-    color: white;
-}
-
-.alumnos-page-delete-btn:hover {
-    background-color: #c82333;
-}
-
-/* Estilo para el botón de ver QR (gris) */
-.alumnos-page-qr-btn {
-    background-color: #6c757d;
-    color: white;
-}
-
-.alumnos-page-qr-btn:hover {
-    background-color: #5a6268;
+    .alumnos-search {
+        width: 200px; /* Reduce el tamaño del campo de búsqueda en pantallas más pequeñas */
+    }
 }

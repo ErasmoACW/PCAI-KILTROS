@@ -4,6 +4,7 @@ import './addadmin.css';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import Header from '../components/header';
 
 const Addadmin = () => {
 
@@ -25,21 +26,11 @@ const Addadmin = () => {
 
     return (
         <div className="addadmin-page-container">
-            <header className="addadmin-page-header">
-                <div className="addadmin-page-logo">PCAI</div>
-                <div className="addadmin-page-buttons">
-                    <Link to="/home" className="addadmin-page-btn">Home</Link>
-                    <Link to="/admin" className="addadmin-page-btn">Admins</Link>
-                    <Link to="/alumnos" className="addadmin-page-btn">Alumnos</Link>
-                    <Link to="/asistencia" className="addadmin-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="addadmin-page-btn">Escaner QR</Link>
-                    <Link to="/" className="addadmin-page-btn">Cerrar Sesion</Link>
-                    
-                </div>
-            </header>
+            <Header />
             <main className="addadmin-page-main-content">
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                     <Form>
+                    <h2>Editor de Administradores</h2>
                         <div className="form-group">
                             <label className="form-label" htmlFor="usuario">Usuario:</label>
                             <Field

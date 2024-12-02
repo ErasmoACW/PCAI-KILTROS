@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import './editadmin.css';
+import Header from '../components/header';
 
 const Editadmin = () => {
     let { id_admin } = useParams();
@@ -36,17 +37,7 @@ const Editadmin = () => {
     return (
         <div className="editadmin-page-container">
             {/* Header */}
-            <header className="editadmin-page-header">
-                <div className="editadmin-page-logo">PCAI</div>
-                <div className="editadmin-page-buttons">
-                    <Link to="/home" className="editadmin-page-btn">Home</Link>
-                    <Link to="/admin" className="editadmin-page-btn">Admins</Link>
-                    <Link to="/alumnos" className="editadmin-page-btn">Alumnos</Link>
-                    <Link to="/asistencia" className="editadmin-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="editadmin-page-btn">Escaner QR</Link>
-                    <Link to="/" className="editadmin-page-btn">Cerrar Sesion</Link>
-                </div>
-            </header>
+            <Header />
             <main className="editadmin-page-main-content">
                 
                 <Formik
@@ -56,6 +47,7 @@ const Editadmin = () => {
                     validationSchema={validationSchema}
                 >
                     <Form className="editadmin-form">
+                    <h2>Editor de Administrador</h2>
                         <div className="form-group">
                             <label className="form-label">Usuario:</label>
                             <ErrorMessage name="usuario" component="span" className="form-error" />

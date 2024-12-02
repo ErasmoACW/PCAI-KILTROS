@@ -1,0 +1,65 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #6c757d, #adb5bd); /* Gradiente sobrio en tonos gris */
+    color: #fff; /* Texto blanco para contraste */
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    border-radius: 0; /* Bordes rectos */
+    margin-bottom: 1.5rem;
+}
+
+/* Logo */
+.page-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+}
+
+/* Botones de navegación */
+.page-buttons {
+    display: flex;
+    gap: 0.5rem; /* Espaciado uniforme entre botones */
+}
+
+.page-btn {
+    background: #495057; /* Gris oscuro neutro */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px; /* Bordes redondeados */
+    font-weight: 600;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.page-btn:hover {
+    background: #343a40; /* Gris más oscuro para hover */
+    transform: scale(1.05); /* Pequeño zoom */
+}
+
+/* Botón de cerrar sesión */
+.logout-btn {
+    background: #d9534f; /* Rojo más suave */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover {
+    background: #c12e2a; /* Rojo más oscuro para hover */
+    transform: scale(1.05); /* Pequeño zoom */
+}
+
+/* Animación de entrada para el encabezado */
+.page-header {
+    animation: fadeInDown 0.8s ease forwards;
+}

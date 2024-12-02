@@ -3,8 +3,8 @@ import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
 import "./asistencia.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faX } from '@fortawesome/free-solid-svg-icons'; // Puedes importar otros íconos si los necesitas
-
+import { faCheck, faX } from '@fortawesome/free-solid-svg-icons';
+import Header from '../components/header';
 
 function Asistencia() {
     const getCurrentMonth = () => {
@@ -75,24 +75,15 @@ function Asistencia() {
     return (
         <div className="asistencia-page-container">
             {/* Header */}
-            <header className="asistencia-page-header">
-                <div className="asistencia-page-logo">PCAI</div>
-                <div className="asistencia-page-buttons">
-                    <Link to="/home" className="asistencia-page-btn">Home</Link>
-                    <Link to="/admin" className="asistencia-page-btn">Admins</Link>
-                    <Link to="/alumnos" className="asistencia-page-btn">Alumnos</Link>
-                    <Link to="/asistencia" className="asistencia-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="asistencia-page-btn">Escaner QR</Link>
-                    <button onClick={handleLogout} className="asistencia-page-btn">Cerrar Sesión</button>
-                </div>
-            </header>
+            <Header />
 
             {/* Main Content */}
             <main className="asistencia-page-main-content">
-                <h1>Registro de Asistencia</h1>
-                <div className="alumnos-page-search-actions">
+                
+                <div className="asistencia-page-search-actions">
+                    <h1 className="asistencia-title">Registro de Asistencia</h1>
                     <select
-                        className="alumnos-page-search-bar"
+                        className="asistencia-page-search-bar"
                         value={searchTerm}
                         onChange={handleSearchChange}
                     >
@@ -110,7 +101,8 @@ function Asistencia() {
                         <option value='12'>Diciembre</option>
                     </select>
                 </div>
-                <div className="asistencia-table-container">
+
+                <div className="asistencia-page-table-container">
                     <table className="asistencia-page-table">
                         <thead>
                             <tr>
@@ -131,7 +123,7 @@ function Asistencia() {
                                         </td>
                                     ))}
                                     <td>
-                                        <Link to={`/EditAsistencia/${nombreCompleto}%20${searchTerm}`} className="alumnos-page-edit-btn">Editar</Link>
+                                        <Link to={`/EditAsistencia/${nombreCompleto}%20${searchTerm}`} className="asistencia-page-edit-btn">Editar</Link>
                                     </td>
                                 </tr>
                             ))}

@@ -1,16 +1,3 @@
-/* Reset de márgenes y rellenos para todos los elementos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Estilos globales para html y body */
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Sour Gummy', sans-serif; /* Fuente personalizada */
-}
 
 /* Contenedor principal para la página de Editar Admin */
 .editadmin-page-container {
@@ -19,43 +6,6 @@ html, body {
     height: 100vh;
 }
 
-/* Estilo para el encabezado */
-.editadmin-page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-}
-
-/* Logo dentro del encabezado */
-.editadmin-page-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* Contenedor para los botones de navegación */
-.editadmin-page-buttons {
-    display: flex;
-}
-
-/* Estilo para los botones de navegación */
-.editadmin-page-btn {
-    background-color: #555;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-}
-
-/* Efecto hover para los botones de navegación */
-.editadmin-page-btn:hover {
-    background-color: #777;
-}
 
 /* Contenedor principal del contenido */
 .editadmin-page-main-content {

@@ -1,173 +1,129 @@
-/* Reset de márgenes y rellenos para todos los elementos */
-* {
-    margin: 0;
-    padding: 0;
+/* Contenedor del título y dropdown */
+.asistencia-page-search-actions {
+    display: flex;
+    justify-content: space-between; /* Alinea el título y el dropdown en los extremos */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 10px 20px;
+    width: 100%;
     box-sizing: border-box;
 }
 
-/* Estilos globales para html y body */
-html, body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Sour Gummy', sans-serif; /* Fuente personalizada */
+/* Estilo del título con margen a la izquierda */
+.asistencia-title {
+    font-size: 2rem;
+    color: #444; /* Gris oscuro sobrio */
+    margin: 0;
+    margin-left: 30px; /* Margen a la izquierda del título */
+    flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
 }
 
-/* Contenedor principal para la página de Asistencia */
-.asistencia-page-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-image: url("../ima/3.png"); /* Ruta de la imagen */
-    background-size: cover; /* Asegura que la imagen cubra todo el área */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    position: relative; /* Necesario para posicionar el overlay correctamente */
-}
-
-/* Overlay semi-transparente sobre el fondo de la imagen */
-.asistencia-page-container::before {
-    content: ""; /* Necesario para crear el pseudo-elemento */
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(51, 51, 51, 0.7); /* Fondo oscuro con opacidad */
-    z-index: -1; /* Pone el overlay detrás del contenido */
-}
-
-/* Estilo para el encabezado */
-.asistencia-page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(51, 51, 51, 0.7); /* Fondo oscuro semi-translúcido */
-    color: #ffffffbb;
-    padding: 1rem;
-    width: 100%;
-}
-
-/* Logo dentro del encabezado */
-.asistencia-page-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* Contenedor para los botones de navegación */
-.asistencia-page-buttons {
-    display: flex;
-}
-
-/* Estilo para los botones de navegación */
-.asistencia-page-btn {
-    background-color: #555;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-}
-
-/* Efecto hover para los botones de navegación */
-.asistencia-page-btn:hover {
-    background-color: #777;
-}
-
-/* Botón de cerrar sesión */
-
-
-.home-btn:hover {
-    background-color: #b02a37; /* Rojo más oscuro */
-}
-
-/* Contenido principal de la página de Asistencia */
-.asistencia-page-main-content {
-    padding: 20px;
-    width: 100%;
-    display: block; /* Asegura que los elementos se alineen hacia la parte superior */
-}
-
-/* Dropdown para selección de mes */
-.alumnos-page-search-bar {
-    width: 200px; /* Ancho fijo */
-    padding: 8px 12px;
-    margin-bottom: 15px;
+/* Estilo para el dropdown con margen a la derecha */
+.asistencia-page-search-bar {
     font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    border: 2px solid #5a5a5a; /* Gris más oscuro */
+    border-radius: 5px;
+    background-color: #fff;
+    margin-left: 20px; /* Espacio a la izquierda para separarlo del título */
+    margin-right: 30px; /* Margen a la derecha del dropdown */
+    width: 150px; /* Ancho fijo para el dropdown */
 }
-/* Contenedor principal de la tabla con scroll */
+
+/* Contenedor principal de la tabla con scroll y márgenes */
 .asistencia-table-container {
-    width: 100%; /* Ajusta al ancho del contenedor principal */
-    max-height: 400px; /* Altura máxima de la tabla visible */
-    overflow-x: auto; /* Scroll horizontal */
-    overflow-y: auto; /* Scroll vertical si es necesario */
-    border: 1px solid #ddd; /* Borde que separa la tabla */
-    margin-top: 20px; /* Espaciado entre otros elementos */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #fff; /* Fondo para destacar la tabla */
+    width: calc(100% - 60px);  /* Ajuste para dejar márgenes a los lados (30px a la izquierda y derecha) */
+    max-height: 700px;
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 2px solid #ccc; /* Gris claro para el borde */
+    margin: 20px auto; /* Márgenes en los lados (derecha e izquierda) */
+    border-radius: 10px;
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
 }
 
 /* Estilo para la tabla */
 .asistencia-page-table {
-    min-width: 1200px; /* Ancho mínimo para que la tabla no se comprima */
+    width: 95%;
     border-collapse: collapse;
-    table-layout: auto; /* Permite que las columnas tengan ancho dinámico */
-    font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
+    table-layout: auto;
+    font-size: 1rem;
     background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centra la tabla dentro de su contenedor */
 }
 
-/* Cabecera de la tabla */
+/* Cabecera de la tabla con color sólido */
 .asistencia-page-table th {
-    padding: 12px;
-    background-color: #f1f3f59d; /* Fondo semi-transparente */
+    padding: 14px;
+    background-color: #5a5a5a; /* Gris oscuro para encabezados */
     font-weight: bold;
     text-align: center;
-    border: 1px solid lightgray;
+    color: #fff; /* Texto blanco */
+    border: 1px solid #bbb; /* Gris claro para bordes */
 }
 
 /* Celdas de la tabla */
 .asistencia-page-table td {
-    padding: 10px;
+    padding: 12px;
     text-align: center;
-    border-left: 1px solid lightgray; /* Aplica borde izquierdo */
-    border-right: 1px solid lightgray; /* Aplica borde derecho */
-    word-wrap: break-word; /* Ajusta texto largo */
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    word-wrap: break-word;
 }
 
-
 /* Alternar color en filas */
+.asistencia-page-table tr:nth-child(odd) {
+    background-color: #f8f9fa; /* Gris muy claro */
+}
+
 .asistencia-page-table tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: #e9ecef; /* Gris suave */
 }
 
 /* Hover en filas */
 .asistencia-page-table tr:hover {
-    background-color: #e9ecef;
-}
-
-.asistencia-page-table tr:last-child {
-    border-bottom: 1px solid lightgray;
-}
-
-/* Botones dentro de la tabla */
-.alumnos-page-edit-btn {
-    background-color: #007bff; /* Azul estándar */
-    color: #fff;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 0.85rem;
+    background-color: #dee2e6; /* Gris intermedio al hacer hover */
     transition: background-color 0.3s ease;
 }
 
+/* Primera columna con color más neutro */
+.asistencia-page-table td:first-child {
+    background-color: #e3dac9; /* Beige sobrio */
+    font-weight: bold;
+}
+
 /* Hover en botones de editar */
-.alumnos-page-edit-btn:hover {
-    background-color: #0056b3; /* Azul oscuro */
+.asistencia-page-edit-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #007bff; /* Azul brillante */
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.asistencia-page-edit-btn:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+/* Scrollbar personalizado */
+.asistencia-table-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.asistencia-table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.asistencia-table-container::-webkit-scrollbar-thumb {
+    background: #aaa; /* Gris sobrio */
+    border-radius: 10px;
+}
+
+.asistencia-table-container::-webkit-scrollbar-thumb:hover {
+    background: #888;
 }

@@ -3,6 +3,7 @@ import { BrowserMultiFormatReader } from "@zxing/library";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./scaner.css";
+import Header from '../components/header';
 
 function Scanner() {
   const [alumno, setAlumno] = useState(null);
@@ -56,17 +57,7 @@ function Scanner() {
 
   return (
     <div className="scanner-page-container">
-      <header className="scanner-page-header">
-        <div className="scanner-page-logo">PCAI</div>
-        <nav className="scanner-page-buttons">
-          <Link to="/home" className="scanner-page-btn">Home</Link>
-          <Link to="/admin" className="scanner-page-btn">Admins</Link>
-          <Link to="/alumnos" className="scanner-page-btn">Alumnos</Link>
-          <Link to="/asistencia" className="scanner-page-btn">Asistencia</Link>
-          <Link to="/scaner" className="scanner-page-btn">Escaner QR</Link>
-          <Link to="/" className="scanner-page-btn">Cerrar Sesión</Link>
-        </nav>
-      </header>
+      <Header />
 
       <main className="scanner-page-main-content">
         <h1 className="scanner-page-title">Escáner de QR</h1>

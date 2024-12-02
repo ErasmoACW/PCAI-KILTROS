@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './home.css';
+import Header from '../components/header';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -37,17 +38,7 @@ const Home = () => {
   return (
     <div className="home-container">
       {/* Header */}
-      <header className="home-header">
-        <div className="home-logo">PCAI</div>
-        <div className="home-buttons">
-          <Link to="/home" className="home-btn">Home</Link>
-          <Link to="/admin" className="home-btn">Admins</Link>
-          <Link to="/alumnos" className="home-btn">Alumnos</Link>
-          <Link to="/asistencia" className="home-btn">Asistencia</Link>
-          <Link to="/scaner" className="home-btn">Escaner QR</Link>
-          <button onClick={handleLogout} className="home-btn">Cerrar Sesión</button>
-        </div>
-      </header>
+      <Header />
 
       {/* Main content */}
       <main className="home-main-content">

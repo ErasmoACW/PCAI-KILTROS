@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './alumnos.css';
+import Header from '../components/header';
 import QRCode from 'qrcode';
 
 const Alumnos = () => {
     const [listofalumnos, setlistofalumnos] = useState([]);
-    const [filteredAlumnos, setFilteredAlumnos] = useState([]); // Para almacenar los alumnos filtrados
-    const [searchTerm, setSearchTerm] = useState(""); // Estado para la barra de búsqueda
-    const [mostrarQR, setMostrarQR] = useState({}); // Estado para controlar cuándo mostrar el QR
+    const [filteredAlumnos, setFilteredAlumnos] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [mostrarQR, setMostrarQR] = useState({});
     let navigate = useNavigate();
 
     const deleteAlumno = (id_alumno) => {
@@ -22,16 +23,15 @@ const Alumnos = () => {
     useEffect(() => {
         axios.get("http://localhost:8800/alumnos").then((response) => {
             setlistofalumnos(response.data);
-            setFilteredAlumnos(response.data); // Inicializa los alumnos filtrados
+            setFilteredAlumnos(response.data);
         });
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem('token');  // Eliminar el token
-        navigate('/');  // Redirigir al home o login
+        localStorage.removeItem('token');
+        navigate('/');
     };
 
-    // Filtrar alumnos en tiempo real según el término de búsqueda
     useEffect(() => {
         const results = listofalumnos.filter((alumno) =>
             `${alumno.nombre} ${alumno.apellido_1} ${alumno.apellido_2}`
@@ -86,78 +86,73 @@ const Alumnos = () => {
     };
 
     return (
-        <div className="alumnos-page-container">
-            {/* Header */}
-            <header className="alumnos-page-header">
-                <div className="alumnos-page-logo">PCAI</div>
-                <div className="alumnos-page-buttons">
-                    <Link to="/home" className="alumnos-page-btn">Home</Link>
-                    <Link to="/admin" className="alumnos-page-btn">Admins</Link>
-                    <Link to="/alumnos" className="alumnos-page-btn">Alumnos</Link>
-                    <Link to="/asistencia" className="alumnos-page-btn">Asistencia</Link>
-                    <Link to="/scaner" className="alumnos-page-btn">Escaner QR</Link>
-                    {/* Botón de cerrar sesión con el evento handleLogout */}
-                    <button onClick={handleLogout} className="home-btn">Cerrar Sesión</button>
-                </div>
-            </header>
-            <main className="alumnos-page-main-content">
-                <div className="alumnos-page-filter-container">
+        <div className="alumnos-container">
+            <Header />
+            <main className="alumnos-main">
+                <div className="alumnos-header">
                     <h1>Lista de Alumnos</h1>
-                    <div className="alumnos-page-search-actions">
+                    <div className="alumnos-actions">
                         <input
                             type="text"
                             placeholder="Buscar alumno..."
-                            className="alumnos-page-search-bar"
+                            className="alumnos-search"
                             value={searchTerm}
                             onChange={handleSearchChange}
                         />
-                        <Link to="/addalumnos" className="alumnos-page-btn">Agregar Alumnos</Link>
+                        <Link to="/addalumnos" className="btn btn-primary">Agregar Alumnos</Link>
                     </div>
                 </div>
-
-                <table className="alumnos-page-table">
-                    <thead>
-                        <tr>
-                            <th>ID Alumno</th>
-                            <th>Nombre</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
-                            <th>RUT</th>
-                            <th>Correo Apoderado</th>
-                            <th>Nombre Apoderado</th>
-                            <th>Apellido Apoderado</th>
-                            <th>Curso</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                            <th>QR</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredAlumnos.map((alumno) => (
-                            <tr key={alumno.id_alumno}>
-                                <td>{alumno.id_alumno}</td>
-                                <td>{alumno.nombre}</td>
-                                <td>{alumno.apellido_1}</td>
-                                <td>{alumno.apellido_2}</td>
-                                <td>{alumno.rut}</td>
-                                <td>{alumno.correo_ap}</td>
-                                <td>{alumno.nombre_ap}</td>
-                                <td>{alumno.apellido_ap}</td>
-                                <td>{alumno.curso}</td>
-                                <td><button className="alumnos-page-edit-btn" onClick={() => navigate(`/EditAlumnos/${alumno.id_alumno}`)}>Editar</button></td>
-                                <td><button className="alumnos-page-delete-btn" onClick={() => deleteAlumno(alumno.id_alumno)}>Eliminar</button></td>
-                                <td>
-                                    <button
-                                        className="alumnos-page-qr-btn"
-                                        onClick={() => downloadQR(alumno)}
-                                    >
-                                        Descargar QR
-                                    </button>
-                                </td>
+                <div className="alumnos-table-container">
+                    <table className="alumnos-table">
+                        <thead>
+                            <tr>
+                                <th>ID Alumno</th>
+                                <th>Nombre</th>
+                                <th>Apellido Paterno</th>
+                                <th>Apellido Materno</th>
+                                <th>RUT</th>
+                                <th>Correo Apoderado</th>
+                                <th>Nombre Apoderado</th>
+                                <th>Apellido Apoderado</th>
+                                <th>Curso</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                                <th>QR</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {filteredAlumnos.map((alumno) => (
+                                <tr key={alumno.id_alumno}>
+                                    <td>{alumno.id_alumno}</td>
+                                    <td>{alumno.nombre}</td>
+                                    <td>{alumno.apellido_1}</td>
+                                    <td>{alumno.apellido_2}</td>
+                                    <td>{alumno.rut}</td>
+                                    <td>{alumno.correo_ap}</td>
+                                    <td>{alumno.nombre_ap}</td>
+                                    <td>{alumno.apellido_ap}</td>
+                                    <td>{alumno.curso}</td>
+                                    <td>
+                                        <button className="btn btn-edit" onClick={() => navigate(`/EditAlumnos/${alumno.id_alumno}`)}>
+                                            Editar
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-delete" onClick={() => deleteAlumno(alumno.id_alumno)}>
+                                            Eliminar
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-qr" onClick={() => downloadQR(alumno)}>
+                                            Descargar QR
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
             </main>
         </div>
     );
