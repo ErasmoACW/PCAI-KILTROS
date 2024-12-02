@@ -39,7 +39,7 @@ const Admin = () => {
                         <tr>
                             <th>ID Admin</th>
                             <th>Usuario</th>
-                            <th>Contraseña</th>
+                            
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -49,7 +49,7 @@ const Admin = () => {
                             <tr key={admin.id_admin}>
                                 <td>{admin.id_admin}</td>
                                 <td>{admin.usuario}</td>
-                                <td>{admin.contrasena}</td>
+                                
                                 <td>
                                     <button
                                         className="admin-page-edit-btn"

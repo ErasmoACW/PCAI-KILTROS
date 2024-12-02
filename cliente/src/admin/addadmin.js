@@ -5,8 +5,10 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import Header from '../components/header';
+import { useNavigate } from "react-router-dom";
 
 const Addadmin = () => {
+    const navigate = useNavigate(); // Hook para manejar la navegación
 
     const initialValues = {
         usuario: "",
@@ -20,7 +22,7 @@ const Addadmin = () => {
 
     const onSubmit = (data) => {
         axios.post("http://localhost:8800/admin/insert", data).then((response) => {
-            window.location.reload();
+            navigate("/admin"); // Navegar a la ruta /alumnos;
         });
     };
 
